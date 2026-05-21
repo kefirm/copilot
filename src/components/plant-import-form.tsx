@@ -128,8 +128,8 @@ function Messages({ title, items }: { title: string; items: string[] }) {
     <div className="space-y-1">
       <h3 className="font-medium">{title}</h3>
       <ul className="list-disc space-y-1 pl-5">
-        {items.map((item) => (
-          <li key={item}>{item}</li>
+        {items.map((item, index) => (
+          <li key={`${title}-${index}`}>{item}</li>
         ))}
       </ul>
     </div>
