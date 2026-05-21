@@ -32,7 +32,7 @@ npm run build
 ## Najważniejsze funkcje MVP
 
 - Dashboard (`/`)
-- Mapa ogrodu 24x120 (`/mapa`) z nazwą rośliny tylko w zajętych komórkach
+- Mapa ogrodu 24x120 (`/mapa`) z nazwą rośliny tylko w zajętych komórkach i ręcznym przeciąganiem na puste pola
 - CRUD roślin (`/rosliny`)
 - CRUD grup (`/grupy`)
 - CRUD produktów (`/produkty`)
@@ -51,3 +51,14 @@ Dane przechowywane są lokalnie w `data/db.json`:
 - `products(name, product_type, default_dose, default_unit, notes, timestamps)`
 - `treatments(target_type plant/group, plant_id, group_id, treatment_type, date, product_id, product_name_manual, dose, unit, reason, notes, timestamps)`
 - `observations(plant_id, date, observation_type, title, description, timestamps)`
+
+## Przesuwanie roślin na mapie
+
+- Wejdź na `/mapa`.
+- Przeciągnij nazwę rośliny na puste pole.
+- Zajęte pole blokuje ruch i pokaże komunikat po polsku.
+- Jeśli nie korzystasz z myszy, pozycję nadal możesz zmienić w formularzu edycji rośliny.
+
+## Nazewnictwo grup
+
+- Dla uproszczonych grup krzewów używaj etykiety `Krzewy`.
