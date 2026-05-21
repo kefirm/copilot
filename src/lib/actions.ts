@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { id, nowIso, readDb, writeDb } from "@/lib/db";
 import { importPlantsFromGrid, type PlantsImportSummary } from "@/lib/plant-import";
-import { parseIntSafe, text } from "@/lib/utils";
+import { normalizeGroupName, parseIntSafe, text } from "@/lib/utils";
 
 function refreshAll(): void {
   revalidatePath("/");
@@ -16,6 +16,11 @@ function refreshAll(): void {
   revalidatePath("/produkty");
   revalidatePath("/zabiegi");
   revalidatePath("/obserwacje");
+}
+
+function revalidatePlantDetailPaths(plantId: string): void {
+  revalidatePath(`/rosliny/${plantId}`);
+  revalidatePath(`/rosliny/${plantId}/edytuj`);
 }
 
 function assertPlantPositionAvailable(
@@ -38,6 +43,9 @@ const SAMPLE_GARDEN_CSV_PATH = path.join(
   "examples",
   "przykladowy-arkusz-ogrodu.csv",
 );
+// Imports are handled fully in-memory via server action. For the fixed 24 × 120 grid, 2 MB is
+// comfortably enough for sparse CSV exports while still preventing unexpectedly large uploads.
+const MAX_IMPORT_UPLOAD_SIZE_BYTES = 2 * 1024 * 1024;
 
 function parseCategory(value: string): "tree" | "shrub" | "vine" | "potted" | "unknown" {
   if (
@@ -81,7 +89,7 @@ export async function createGroup(formData: FormData): Promise<void> {
   const timestamp = nowIso();
   db.groups.push({
     id: id(),
-    name: text(formData.get("name")),
+    name: normalizeGroupName(text(formData.get("name"))),
     description: text(formData.get("description")),
     created_at: timestamp,
     updated_at: timestamp,
@@ -100,7 +108,7 @@ export async function updateGroup(formData: FormData): Promise<void> {
     return;
   }
 
-  group.name = text(formData.get("name"));
+  group.name = normalizeGroupName(text(formData.get("name")));
   group.description = text(formData.get("description"));
   group.updated_at = nowIso();
 
@@ -205,6 +213,55 @@ export async function deletePlant(formData: FormData): Promise<void> {
   redirect("/rosliny");
 }
 
+export async function movePlantOnMap(input: {
+  plantId: string;
+  rowNum: number;
+  colNum: number;
+}): Promise<{ ok: true; message: string } | { ok: false; message: string }> {
+  const db = await readDb();
+  const plant = db.plants.find((item) => item.id === input.plantId);
+
+  if (!plant) {
+    return { ok: false, message: "Nie znaleziono rośliny do przeniesienia." };
+  }
+
+  if (input.rowNum < 1 || input.rowNum > 24 || input.colNum < 1 || input.colNum > 120) {
+    return {
+      ok: false,
+      message: "Pole docelowe jest poza mapą. Wybierz komórkę w zakresie 24 × 120.",
+    };
+  }
+
+  if (plant.row_num === input.rowNum && plant.col_num === input.colNum) {
+    return {
+      ok: true,
+      message: `${plant.display_name} już znajduje się w tym polu.`,
+    };
+  }
+
+  try {
+    assertPlantPositionAvailable(db.plants, input.rowNum, input.colNum, plant.id);
+  } catch {
+    return {
+      ok: false,
+      message: "To pole jest już zajęte. Wybierz puste pole na mapie.",
+    };
+  }
+
+  plant.row_num = input.rowNum;
+  plant.col_num = input.colNum;
+  plant.updated_at = nowIso();
+
+  await writeDb(db);
+  refreshAll();
+  revalidatePlantDetailPaths(plant.id);
+
+  return {
+    ok: true,
+    message: `Przeniesiono ${plant.display_name} do wiersza ${input.rowNum}, kolumny ${input.colNum}.`,
+  };
+}
+
 /**
  * Server action used by the Rośliny import form.
  * Reads either an uploaded CSV file or the bundled sample, imports grid data into local storage,
@@ -232,7 +289,7 @@ export async function importPlantsFromGridCsv(
         };
       }
 
-      if (file.size > 2 * 1024 * 1024) {
+      if (file.size > MAX_IMPORT_UPLOAD_SIZE_BYTES) {
         return {
           status: "error",
           message: "Plik jest zbyt duży. Maksymalny rozmiar importu to 2 MB.",
