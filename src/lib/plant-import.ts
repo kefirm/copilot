@@ -218,7 +218,7 @@ export function inferPlantCategory(label: string): Category {
   }
 
   if (
-    ["borow", "porzecz", "agrest", "aroni", "jezyn", "malin", "jagod", "goji"].some((keyword) =>
+    ["borow", "porzecz", "agrest", "aronia", "jezyn", "malin", "jagod", "goji"].some((keyword) =>
       normalized.includes(keyword),
     )
   ) {
@@ -238,7 +238,8 @@ export function deriveDisplayName(label: string): string {
 /**
  * Splits the imported label into the app's species/variety fields.
  * It first uses known species hints, then falls back to a vine-specific default or a simple
- * first-word split when the label does not match any supported hint.
+ * first-word split when the label does not match any supported hint. Vines keep the full label
+ * in `species` during the final fallback because cultivar-only kiwi labels are common in imports.
  */
 export function deriveSpeciesAndVariety(
   label: string,
