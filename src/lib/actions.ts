@@ -67,7 +67,7 @@ function parseTargetType(value: string): "plant" | "group" {
 }
 
 function isUploadedFile(value: FormDataEntryValue | null): value is File {
-  return typeof value === "object" && value !== null && "text" in value && "size" in value;
+  return value instanceof File;
 }
 
 type ImportPlantsActionState = {

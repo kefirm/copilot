@@ -217,14 +217,6 @@ export function inferPlantCategory(label: string): Category {
     }
   }
 
-  if (
-    ["borow", "porzecz", "agrest", "aronia", "jezyn", "malin", "jagod", "goji"].some((keyword) =>
-      normalized.includes(keyword),
-    )
-  ) {
-    return "shrub";
-  }
-
   return "unknown";
 }
 
