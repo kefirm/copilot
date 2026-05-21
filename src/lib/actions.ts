@@ -43,6 +43,8 @@ const SAMPLE_GARDEN_CSV_PATH = path.join(
   "examples",
   "przykladowy-arkusz-ogrodu.csv",
 );
+// Imports are handled fully in-memory via server action, so keep uploads small and predictable.
+const MAX_IMPORT_UPLOAD_SIZE_BYTES = 2 * 1024 * 1024;
 
 function parseCategory(value: string): "tree" | "shrub" | "vine" | "potted" | "unknown" {
   if (
@@ -286,7 +288,7 @@ export async function importPlantsFromGridCsv(
         };
       }
 
-      if (file.size > 2 * 1024 * 1024) {
+      if (file.size > MAX_IMPORT_UPLOAD_SIZE_BYTES) {
         return {
           status: "error",
           message: "Plik jest zbyt duży. Maksymalny rozmiar importu to 2 MB.",

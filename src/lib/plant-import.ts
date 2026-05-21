@@ -13,14 +13,19 @@ export interface PlantsImportSummary {
   errors: string[];
 }
 
+// The importer writes directly into the same fixed-size 24 × 120 garden grid used on `/mapa`.
+// Rows or columns beyond this area are skipped instead of stretching the persisted map model.
 const MAX_ROWS = 24;
 const MAX_COLS = 120;
 
-const categoryHints: Array<{ category: Category; keywords: string[] }> = [
-  { category: "potted", keywords: ["w doniczce", "w donicy", "doniczka", "donica", "patio"] },
+const categoryHints: Array<{ category: Category; normalizedKeywords: string[] }> = [
+  {
+    category: "potted",
+    normalizedKeywords: ["w doniczce", "w donicy", "doniczka", "donica", "patio"].map(normalizeForMatch),
+  },
   {
     category: "vine",
-    keywords: [
+    normalizedKeywords: [
       "kiwi",
       "ostrolistna",
       "smakowita",
@@ -31,11 +36,11 @@ const categoryHints: Array<{ category: Category; keywords: string[] }> = [
       "issai",
       "dr szymanowski",
       "purpurna sadowa",
-    ],
+    ].map(normalizeForMatch),
   },
   {
     category: "tree",
-    keywords: [
+    normalizedKeywords: [
       "jabłon",
       "jablon",
       "grusza",
@@ -52,11 +57,11 @@ const categoryHints: Array<{ category: Category; keywords: string[] }> = [
       "migdalowiec",
       "morwa",
       "figowiec",
-    ],
+    ].map(normalizeForMatch),
   },
   {
     category: "shrub",
-    keywords: [
+    normalizedKeywords: [
       "borówka",
       "borowka",
       "porzeczka",
@@ -68,7 +73,7 @@ const categoryHints: Array<{ category: Category; keywords: string[] }> = [
       "jagoda goji",
       "goji",
       "pigwowiec",
-    ],
+    ].map(normalizeForMatch),
   },
 ];
 
@@ -212,7 +217,7 @@ export function parseCsvMatrix(input: string): string[][] {
 export function inferPlantCategory(label: string): Category {
   const normalized = normalizeForMatch(label);
   for (const hint of categoryHints) {
-    if (hint.keywords.some((keyword) => normalized.includes(normalizeForMatch(keyword)))) {
+    if (hint.normalizedKeywords.some((keyword) => normalized.includes(keyword))) {
       return hint.category;
     }
   }
