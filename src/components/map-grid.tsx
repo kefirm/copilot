@@ -9,10 +9,14 @@ export function MapGrid({
   plants,
   rows,
   cols,
+  startRow = 1,
+  groupColors,
 }: {
   plants: Plant[];
   rows: number;
   cols: number;
+  startRow?: number;
+  groupColors: Record<string, string>;
 }) {
   const occupied = new Map(plants.map((plant) => [`${plant.row_num}:${plant.col_num}`, plant]));
   const [draggedPlantId, setDraggedPlantId] = useState<string | null>(null);
@@ -93,8 +97,8 @@ export function MapGrid({
               </tr>
             </thead>
             <tbody>
-              {Array.from({ length: rows }, (_, row) => {
-                const rowNum = row + 1;
+              {Array.from({ length: Math.max(0, rows - startRow + 1) }, (_, rowOffset) => {
+                const rowNum = startRow + rowOffset;
                 return (
                   <tr key={rowNum}>
                     <th className="bg-zinc-50 text-center text-xs">{rowNum}</th>
@@ -102,12 +106,14 @@ export function MapGrid({
                       const colNum = col + 1;
                       const cellKey = `${rowNum}:${colNum}`;
                       const plant = occupied.get(cellKey);
+                      const color = plant?.group_id ? (groupColors[plant.group_id] ?? "#d4d4d8") : "#d4d4d8";
                       return (
                         <td
                           key={colNum}
                           className={`w-[64px] min-w-[64px] align-top text-xs ${
-                            plant ? "bg-emerald-50" : "bg-white"
-                          } ${hoveredCell === cellKey ? "ring-2 ring-zinc-900" : ""}`}
+                            hoveredCell === cellKey ? "ring-2 ring-zinc-900" : ""
+                          }`}
+                          style={{ backgroundColor: plant ? `${color}33` : "#ffffff" }}
                           onDragOver={(event) => event.preventDefault()}
                           onDragEnter={() => setHoveredCell(cellKey)}
                           onDragLeave={() => setHoveredCell((current) => (current === cellKey ? null : current))}
@@ -130,7 +136,8 @@ export function MapGrid({
                                   setDraggedPlantId(null);
                                   setHoveredCell(null);
                                 }}
-                                className="w-full overflow-hidden text-ellipsis whitespace-nowrap rounded border border-emerald-200 bg-emerald-100 px-1 py-0.5 text-left text-xs"
+                                className="w-full overflow-hidden text-ellipsis whitespace-nowrap rounded border px-1 py-0.5 text-left text-xs"
+                                style={{ backgroundColor: `${color}55`, borderColor: color }}
                                 title="Kliknij aby pokazać akcje lub przeciągnij aby przenieść"
                               >
                                 {plant.display_name}

@@ -33,7 +33,8 @@ export function PlantImportForm() {
       <div className="space-y-1">
         <h2 className="text-lg font-semibold">Import z arkusza CSV</h2>
         <p className="text-sm text-zinc-600">
-          Import traktuje plik jako siatkę ogrodu: numer wiersza i kolumny w CSV staje się pozycją rośliny na mapie.
+          Import usuwa aktualne rośliny i wczytuje nową mapę z pliku: numer wiersza i kolumny w CSV staje się pozycją
+          rośliny, a grupy są przypisywane automatycznie po imporcie.
         </p>
       </div>
 

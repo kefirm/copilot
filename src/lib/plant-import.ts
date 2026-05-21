@@ -13,8 +13,8 @@ export interface PlantsImportSummary {
   errors: string[];
 }
 
-const MAX_ROWS = 120;
-const MAX_COLS = 30;
+const MAX_ROWS = 200;
+const MAX_COLS = 20;
 const MIN_PLANT_ROW = 40;
 
 const categoryHints: Array<{ category: Category; normalizedKeywords: string[] }> = [
@@ -76,27 +76,48 @@ const categoryHints: Array<{ category: Category; normalizedKeywords: string[] }>
   },
 ];
 
-const speciesHints = [
-  "Jagoda Goji",
-  "Pigwowiec",
-  "Borówka",
-  "Porzeczka",
-  "Agrest",
-  "Aronia",
-  "Jeżyna",
-  "Malina",
-  "Jabłoń",
-  "Grusza",
-  "Śliwa",
-  "Czereśnia",
-  "Wiśnia",
-  "Morela",
-  "Brzoskwinia",
-  "Nektaryna",
-  "Migdałowiec",
-  "Morwa",
-  "Figowiec",
-  "Kiwi",
+const speciesHints: Array<{ species: string; aliases: string[] }> = [
+  { species: "Jagoda Kamczacka", aliases: ["Jagoda Kamczacka", "Lonicera caerulea"] },
+  { species: "Jagoda Goji", aliases: ["Jagoda Goji", "Goji"] },
+  { species: "Pigwowiec", aliases: ["Pigwowiec"] },
+  { species: "Borówka", aliases: ["Borówka", "Borowka"] },
+  { species: "Porzeczka", aliases: ["Porzeczka", "Porzeczki"] },
+  { species: "Agrest", aliases: ["Agrest", "Agresty"] },
+  { species: "Aronia", aliases: ["Aronia"] },
+  { species: "Jeżyna", aliases: ["Jeżyna", "Jezyna", "Jeżyny", "Jezyny"] },
+  { species: "Malina", aliases: ["Malina", "Maliny"] },
+  { species: "Poziomka", aliases: ["Poziomka"] },
+  { species: "Jabłoń", aliases: ["Jabłoń", "Jablon", "Jablon", "Malus"] },
+  { species: "Grusza", aliases: ["Grusza", "Pyrus"] },
+  { species: "Śliwa", aliases: ["Śliwa", "Sliwa", "Prunus domestica"] },
+  { species: "Czereśnia", aliases: ["Czereśnia", "Czeresnia", "Prunus avium"] },
+  { species: "Wiśnia", aliases: ["Wiśnia", "Wisnia", "Prunus cerasus", "Prunus fruticosa"] },
+  { species: "Morela", aliases: ["Morela", "Prunus armeniaca", "Prunus armenica"] },
+  { species: "Brzoskwinia", aliases: ["Brzoskwinia", "Prunus persica"] },
+  { species: "Nektaryna", aliases: ["Nektaryna"] },
+  { species: "Migdałowiec", aliases: ["Migdałowiec", "Migdalowiec", "Prunus dulcis"] },
+  { species: "Morwa", aliases: ["Morwa", "Morus"] },
+  { species: "Figowiec", aliases: ["Figowiec", "Ficus", "Figa"] },
+  {
+    species: "Kiwi",
+    aliases: [
+      "Kiwi",
+      "Actinidia",
+      "Aktinidia",
+      "Arguta",
+      "Ostrolistna",
+      "Smakowita",
+      "Hayward",
+      "Weiki",
+      "Issai",
+      "Geneva",
+      "Atlas",
+      "Lucy",
+      "Kens",
+      "Adam",
+      "Sentabrskaya",
+    ],
+  },
 ];
 
 function normalizeWhitespace(value: string): string {
@@ -121,40 +142,26 @@ function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function rowStepForCategory(category: Category): number {
-  return category === "tree" ? 3 : 2;
-}
-
-function applyVerticalSpacing(plants: DatabaseSchema["plants"], summary: PlantsImportSummary): void {
-  const byColumn = new Map<number, DatabaseSchema["plants"]>();
+function applyCsvRowLayout(plants: DatabaseSchema["plants"], summary: PlantsImportSummary): void {
+  const minSourceRow = plants.reduce((acc, plant) => Math.min(acc, plant.row_num), Number.POSITIVE_INFINITY);
+  const sourceAnchorRow = Number.isFinite(minSourceRow) ? minSourceRow : 1;
+  const keptPlants: DatabaseSchema["plants"] = [];
 
   for (const plant of plants) {
-    if (!byColumn.has(plant.col_num)) {
-      byColumn.set(plant.col_num, []);
+    const targetRow = MIN_PLANT_ROW + (plant.row_num - sourceAnchorRow);
+    if (targetRow > MAX_ROWS) {
+      summary.warnings.push(
+        `Pominięto "${plant.display_name}" z powodu braku miejsca po przesunięciu do startu R${MIN_PLANT_ROW} (docelowo R${targetRow}).`,
+      );
+      continue;
     }
-    byColumn.get(plant.col_num)?.push(plant);
+
+    plant.row_num = targetRow;
+    keptPlants.push(plant);
   }
 
-  for (const [column, columnPlants] of byColumn) {
-    columnPlants.sort((a, b) => a.row_num - b.row_num);
-
-    let nextAllowedRow = MIN_PLANT_ROW;
-    for (const plant of columnPlants) {
-      const targetRow = Math.max(plant.row_num, nextAllowedRow);
-      if (targetRow > MAX_ROWS) {
-        summary.warnings.push(
-          `Kolumna C${column}: zabrakło miejsca na zachowanie odstępów (R>${MAX_ROWS}) dla "${plant.display_name}".`,
-        );
-        break;
-      }
-
-      if (plant.row_num !== targetRow) {
-        plant.row_num = targetRow;
-      }
-
-      nextAllowedRow = targetRow + rowStepForCategory(plant.category);
-    }
-  }
+  plants.length = 0;
+  plants.push(...keptPlants);
 }
 
 /**
@@ -281,18 +288,20 @@ export function deriveSpeciesAndVariety(
   category: Category,
 ): { species: string; variety: string } {
   for (const speciesHint of speciesHints) {
-    const matcher = new RegExp(`(^|[\\s,;:/-])${escapeRegExp(speciesHint)}(?=$|[\\s,;:/-])`, "i");
-    const match = matcher.exec(label);
-    if (!match) continue;
+    for (const alias of speciesHint.aliases) {
+      const matcher = new RegExp(`(^|[\\s,;:/-])${escapeRegExp(alias)}(?=$|[\\s,;:/-])`, "i");
+      const match = matcher.exec(label);
+      if (!match) continue;
 
-    const matchIndex = match.index + match[1].length;
-    const matchedValue = match[0].slice(match[1].length);
-    return {
-      species: speciesHint,
-      variety: cleanupRemainder(
-        `${label.slice(0, matchIndex)} ${label.slice(matchIndex + matchedValue.length)}`,
-      ),
-    };
+      const matchIndex = match.index + match[1].length;
+      const matchedValue = match[0].slice(match[1].length);
+      return {
+        species: speciesHint.species,
+        variety: cleanupRemainder(
+          `${label.slice(0, matchIndex)} ${label.slice(matchIndex + matchedValue.length)}`,
+        ),
+      };
+    }
   }
 
   const parts = normalizeWhitespace(label).split(" ").filter(Boolean);
@@ -313,7 +322,7 @@ export function deriveSpeciesAndVariety(
  * Every non-empty cell maps to its row/column coordinate; occupied coordinates update the
  * existing plant in place and are reported as warnings in the returned summary. Building the
  * position map is linear in the number of stored plants, which remains practical for this fixed
- * 24 × 120 garden grid.
+ * 20 × 200 garden grid.
  */
 export function importPlantsFromGrid(
   db: DatabaseSchema,
@@ -354,9 +363,9 @@ export function importPlantsFromGrid(
       }
 
       const colNum = columnIndex + 1;
-      if (rowNum > MAX_ROWS || colNum > MAX_COLS) {
+      if (colNum > MAX_COLS) {
         summary.warnings.push(
-          `Pominięto "${originalLabel}" na pozycji R${rowNum} C${colNum}, bo wykracza poza mapę 120×30.`,
+          `Pominięto "${originalLabel}" na pozycji R${rowNum} C${colNum}, bo wykracza poza mapę 200×20.`,
         );
         continue;
       }
@@ -413,7 +422,7 @@ export function importPlantsFromGrid(
     );
   }
 
-  applyVerticalSpacing(db.plants, summary);
+  applyCsvRowLayout(db.plants, summary);
 
   return summary;
 }

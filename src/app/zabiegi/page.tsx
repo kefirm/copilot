@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { deleteTreatment, toggleTreatmentCompleted } from "@/lib/actions";
+import { deleteCompletedTreatments, deleteTreatment, toggleTreatmentCompleted } from "@/lib/actions";
 import { readDb } from "@/lib/db";
 import { formatDate } from "@/lib/utils";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
@@ -19,9 +19,18 @@ export default async function ZabiegiPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Zabiegi</h1>
-        <Link href="/zabiegi/nowy" className="rounded-md bg-zinc-900 px-4 py-2 text-sm text-white">
-          Dodaj zabieg
-        </Link>
+        <div className="flex gap-2">
+          <form action={deleteCompletedTreatments}>
+            <ConfirmSubmitButton
+              label="Usuń ukończone"
+              message="Czy na pewno usunąć wszystkie ukończone zabiegi?"
+              className="rounded-md border border-red-300 px-4 py-2 text-sm text-red-700"
+            />
+          </form>
+          <Link href="/zabiegi/nowy" className="rounded-md bg-zinc-900 px-4 py-2 text-sm text-white">
+            Dodaj zabieg
+          </Link>
+        </div>
       </div>
 
       <div className="overflow-auto rounded-lg border border-zinc-200 bg-white">

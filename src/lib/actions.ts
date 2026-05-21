@@ -5,6 +5,7 @@ import path from "node:path";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { id, nowIso, readDb, writeDb } from "@/lib/db";
+import { inferGroupIdForPlant } from "@/lib/grouping";
 import { importPlantsFromGrid, type PlantsImportSummary } from "@/lib/plant-import";
 import { normalizeGroupName, parseIntSafe, text } from "@/lib/utils";
 
@@ -16,11 +17,6 @@ function refreshAll(): void {
   revalidatePath("/produkty");
   revalidatePath("/zabiegi");
   revalidatePath("/obserwacje");
-}
-
-function revalidatePlantDetailPaths(plantId: string): void {
-  revalidatePath(`/rosliny/${plantId}`);
-  revalidatePath(`/rosliny/${plantId}/edytuj`);
 }
 
 function assertPlantPositionAvailable(
@@ -43,7 +39,7 @@ const SAMPLE_GARDEN_CSV_PATH = path.join(
   "examples",
   "przykladowy-arkusz-ogrodu.csv",
 );
-// Imports are handled fully in-memory via server action. For the fixed 24 × 120 grid, 2 MB is
+// Imports are handled fully in-memory via server action. For the fixed 20 × 200 grid, 2 MB is
 // comfortably enough for sparse CSV exports while still preventing unexpectedly large uploads.
 const MAX_IMPORT_UPLOAD_SIZE_BYTES = 2 * 1024 * 1024;
 
@@ -178,22 +174,37 @@ export async function createPlant(formData: FormData): Promise<void> {
   const rowNum = parseIntSafe(formData.get("row_num"));
   const colNum = parseIntSafe(formData.get("col_num"));
 
-  if (rowNum < 1 || rowNum > 120 || colNum < 1 || colNum > 30) {
-    throw new Error("Współrzędne muszą mieścić się w zakresie 1-120 (wiersz) i 1-30 (kolumna).");
+  if (rowNum < 1 || rowNum > 200 || colNum < 1 || colNum > 20) {
+    throw new Error("Współrzędne muszą mieścić się w zakresie 1-200 (wiersz) i 1-20 (kolumna).");
   }
   assertPlantPositionAvailable(db.plants, rowNum, colNum);
 
   const timestamp = nowIso();
   const groupId = text(formData.get("group_id"));
 
+  const displayName = text(formData.get("display_name"));
+  const species = text(formData.get("species"));
+  const variety = text(formData.get("variety"));
+  const originalLabel = text(formData.get("original_label"));
+  const category = parseCategory(text(formData.get("category")));
+
   db.plants.push({
     id: id(),
-    display_name: text(formData.get("display_name")),
-    species: text(formData.get("species")),
-    variety: text(formData.get("variety")),
-    original_label: text(formData.get("original_label")),
-    category: parseCategory(text(formData.get("category"))),
-    group_id: groupId || null,
+    display_name: displayName,
+    species,
+    variety,
+    original_label: originalLabel,
+    category,
+    group_id:
+      groupId ||
+      inferGroupIdForPlant(db.groups, {
+        category,
+        display_name: displayName,
+        species,
+        variety,
+        original_label: originalLabel,
+      }) ||
+      null,
     row_num: rowNum,
     col_num: colNum,
     notes: text(formData.get("notes")),
@@ -218,19 +229,33 @@ export async function updatePlant(formData: FormData): Promise<void> {
   const rowNum = parseIntSafe(formData.get("row_num"));
   const colNum = parseIntSafe(formData.get("col_num"));
 
-  if (rowNum < 1 || rowNum > 120 || colNum < 1 || colNum > 30) {
-    throw new Error("Współrzędne muszą mieścić się w zakresie 1-120 (wiersz) i 1-30 (kolumna).");
+  if (rowNum < 1 || rowNum > 200 || colNum < 1 || colNum > 20) {
+    throw new Error("Współrzędne muszą mieścić się w zakresie 1-200 (wiersz) i 1-20 (kolumna).");
   }
   assertPlantPositionAvailable(db.plants, rowNum, colNum, plantId);
 
   const groupId = text(formData.get("group_id"));
+  const displayName = text(formData.get("display_name"));
+  const species = text(formData.get("species"));
+  const variety = text(formData.get("variety"));
+  const originalLabel = text(formData.get("original_label"));
+  const category = parseCategory(text(formData.get("category")));
 
-  plant.display_name = text(formData.get("display_name"));
-  plant.species = text(formData.get("species"));
-  plant.variety = text(formData.get("variety"));
-  plant.original_label = text(formData.get("original_label"));
-  plant.category = parseCategory(text(formData.get("category")));
-  plant.group_id = groupId || null;
+  plant.display_name = displayName;
+  plant.species = species;
+  plant.variety = variety;
+  plant.original_label = originalLabel;
+  plant.category = category;
+  plant.group_id =
+    groupId ||
+    inferGroupIdForPlant(db.groups, {
+      category,
+      display_name: displayName,
+      species,
+      variety,
+      original_label: originalLabel,
+    }) ||
+    null;
   plant.row_num = rowNum;
   plant.col_num = colNum;
   plant.notes = text(formData.get("notes"));
@@ -258,8 +283,8 @@ export async function movePlantOnMap(formData: FormData): Promise<void> {
   const rowNum = parseIntSafe(formData.get("row_num"));
   const colNum = parseIntSafe(formData.get("col_num"));
 
-  if (rowNum < 1 || rowNum > 120 || colNum < 1 || colNum > 30) {
-    throw new Error("Współrzędne muszą mieścić się w zakresie 1-120 (wiersz) i 1-30 (kolumna).");
+  if (rowNum < 1 || rowNum > 200 || colNum < 1 || colNum > 20) {
+    throw new Error("Współrzędne muszą mieścić się w zakresie 1-200 (wiersz) i 1-20 (kolumna).");
   }
 
   const plant = db.plants.find((p) => p.id === plantId);
@@ -385,7 +410,21 @@ export async function importPlantsFromGridCsv(
     }
 
     const db = await readDb();
+    db.plants = [];
+    db.observations = [];
+    db.treatments = db.treatments.filter((treatment) => treatment.target_type !== "plant");
+
     const summary = importPlantsFromGrid(db, csvText, sourceName);
+    for (const plant of db.plants) {
+      plant.group_id =
+        inferGroupIdForPlant(db.groups, {
+          category: plant.category,
+          display_name: plant.display_name,
+          species: plant.species,
+          variety: plant.variety,
+          original_label: plant.original_label,
+        }) || null;
+    }
     const changedPlants = summary.imported_count + summary.updated_count;
 
     if (summary.total_cells_scanned === 0) {
@@ -419,6 +458,30 @@ export async function importPlantsFromGridCsv(
       summary: null,
     };
   }
+}
+
+export async function autoAssignPlantGroups(): Promise<void> {
+  const db = await readDb();
+  const timestamp = nowIso();
+
+  for (const plant of db.plants) {
+    const nextGroupId =
+      inferGroupIdForPlant(db.groups, {
+        category: plant.category,
+        display_name: plant.display_name,
+        species: plant.species,
+        variety: plant.variety,
+        original_label: plant.original_label,
+      }) || null;
+
+    if (plant.group_id !== nextGroupId) {
+      plant.group_id = nextGroupId;
+      plant.updated_at = timestamp;
+    }
+  }
+
+  await writeDb(db);
+  refreshAll();
 }
 
 export async function createProduct(formData: FormData): Promise<void> {
@@ -542,6 +605,14 @@ export async function deleteTreatment(formData: FormData): Promise<void> {
   const treatmentId = text(formData.get("id"));
   const db = await readDb();
   db.treatments = db.treatments.filter((t) => t.id !== treatmentId);
+  await writeDb(db);
+  refreshAll();
+  redirect("/zabiegi");
+}
+
+export async function deleteCompletedTreatments(): Promise<void> {
+  const db = await readDb();
+  db.treatments = db.treatments.filter((treatment) => !treatment.completed_at);
   await writeDb(db);
   refreshAll();
   redirect("/zabiegi");

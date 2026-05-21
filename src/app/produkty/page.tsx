@@ -2,9 +2,35 @@ import Link from "next/link";
 import { createProduct, deleteProduct } from "@/lib/actions";
 import { readDb } from "@/lib/db";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
+import type { Product } from "@/lib/types";
 
-export default async function ProduktyPage() {
+function qp(value: string | string[] | undefined): string {
+  return Array.isArray(value) ? value[0] ?? "" : (value ?? "");
+}
+
+function sortProducts(products: Product[], sortOrder: "asc" | "desc"): Product[] {
+  const direction = sortOrder === "desc" ? -1 : 1;
+  return [...products].sort(
+    (a, b) => a.name.localeCompare(b.name, "pl-PL", { sensitivity: "base" }) * direction,
+  );
+}
+
+function sortTextValues(values: string[]): string[] {
+  return values.sort((a, b) => a.localeCompare(b, "pl-PL", { sensitivity: "base" }));
+}
+
+export default async function ProduktyPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const params = await searchParams;
   const db = await readDb();
+  const typeFilter = qp(params.type);
+  const sortOrder: "asc" | "desc" = qp(params.order) === "desc" ? "desc" : "asc";
+  const typeOptions = sortTextValues([...new Set(db.products.map((product) => product.product_type))]);
+  const filteredProducts = db.products.filter((product) => !typeFilter || product.product_type === typeFilter);
+  const visibleProducts = sortProducts(filteredProducts, sortOrder);
 
   return (
     <div className="space-y-4">
@@ -38,11 +64,52 @@ export default async function ProduktyPage() {
         </div>
       </form>
 
+      <form method="get" className="grid gap-3 rounded-lg border border-zinc-200 bg-white p-4 md:grid-cols-3">
+        <input type="hidden" name="order" value={sortOrder} />
+        <label className="flex flex-col gap-1 text-sm md:col-span-2">
+          Filtr typu produktu
+          <select name="type" defaultValue={typeFilter}>
+            <option value="">Wszystkie</option>
+            {typeOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
+        <div className="flex items-end gap-2">
+          <button type="submit" className="rounded-md bg-zinc-900 px-4 py-2 text-sm text-white">
+            Filtruj
+          </button>
+          <Link href="/produkty" className="rounded-md border px-4 py-2 text-sm">
+            Wyczyść
+          </Link>
+        </div>
+      </form>
+
+      <div className="text-sm text-zinc-600">{visibleProducts.length} wyników</div>
+
       <div className="overflow-auto rounded-lg border border-zinc-200 bg-white">
         <table>
           <thead>
             <tr>
-              <th>Nazwa</th>
+              <th>
+                <div className="flex items-center gap-1">
+                  Nazwa
+                  <Link
+                    href={`/produkty?order=asc&type=${encodeURIComponent(typeFilter)}`}
+                    className={sortOrder === "asc" ? "font-semibold" : "text-zinc-500"}
+                  >
+                    ↑
+                  </Link>
+                  <Link
+                    href={`/produkty?order=desc&type=${encodeURIComponent(typeFilter)}`}
+                    className={sortOrder === "desc" ? "font-semibold" : "text-zinc-500"}
+                  >
+                    ↓
+                  </Link>
+                </div>
+              </th>
               <th>Typ</th>
               <th>Dawka domyślna</th>
               <th>Notatki</th>
@@ -50,12 +117,12 @@ export default async function ProduktyPage() {
             </tr>
           </thead>
           <tbody>
-            {db.products.length === 0 ? (
+            {visibleProducts.length === 0 ? (
               <tr>
                 <td colSpan={5}>Brak produktów.</td>
               </tr>
             ) : (
-              db.products.map((product) => (
+              visibleProducts.map((product) => (
                 <tr key={product.id}>
                   <td>{product.name}</td>
                   <td>{product.product_type}</td>
