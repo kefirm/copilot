@@ -1,8 +1,8 @@
 import { readDb } from "@/lib/db";
-import { GardenMap } from "@/components/garden-map";
+import { MapGrid } from "@/components/map-grid";
 
-const ROWS = 24;
-const COLS = 120;
+const ROWS = 120;
+const COLS = 30;
 
 export default async function MapaPage() {
   const db = await readDb();
@@ -10,7 +10,10 @@ export default async function MapaPage() {
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-semibold">Mapa ogrodu ({ROWS} × {COLS})</h1>
-      <GardenMap initialPlants={db.plants} rows={ROWS} cols={COLS} />
+      <p className="text-sm text-zinc-600">
+        Przeciągnij roślinę do nowej komórki. Kliknij nazwę rośliny, aby pokazać akcje.
+      </p>
+      <MapGrid plants={db.plants} rows={ROWS} cols={COLS} />
     </div>
   );
 }

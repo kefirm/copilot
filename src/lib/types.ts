@@ -50,6 +50,7 @@ export interface Treatment {
   unit: string;
   reason: string;
   notes: string;
+  completed_at: string | null;
   created_at: string;
   updated_at: string;
 }
