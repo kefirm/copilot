@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { updatePlant } from "@/lib/actions";
 import { readDb } from "@/lib/db";
+import { categoryOptions } from "@/lib/plants";
 
 export default async function EdytujRoslinePage({
   params,
@@ -37,10 +38,11 @@ export default async function EdytujRoslinePage({
         <label className="flex flex-col gap-1">
           Kategoria
           <select name="category" required defaultValue={plant.category}>
-            <option value="tree">Drzewo</option>
-            <option value="shrub">Krzew</option>
-            <option value="vine">Pnącze</option>
-            <option value="potted">Doniczkowa</option>
+            {categoryOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </label>
         <label className="flex flex-col gap-1">

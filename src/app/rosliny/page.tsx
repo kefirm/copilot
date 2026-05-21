@@ -1,14 +1,9 @@
 import Link from "next/link";
+import { PlantImportForm } from "@/components/plant-import-form";
 import { deletePlant } from "@/lib/actions";
 import { readDb } from "@/lib/db";
+import { categoryLabel } from "@/lib/plants";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
-
-const categoryLabel: Record<string, string> = {
-  tree: "Drzewo",
-  shrub: "Krzew",
-  vine: "Pnącze",
-  potted: "Doniczkowa",
-};
 
 export default async function RoslinyPage() {
   const db = await readDb();
@@ -22,6 +17,8 @@ export default async function RoslinyPage() {
           Dodaj roślinę
         </Link>
       </div>
+
+      <PlantImportForm />
 
       <div className="overflow-auto rounded-lg border border-zinc-200 bg-white">
         <table>

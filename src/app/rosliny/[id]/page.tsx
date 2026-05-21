@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { deletePlant } from "@/lib/actions";
 import { readDb } from "@/lib/db";
+import { categoryLabel } from "@/lib/plants";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
 
 export default async function RoslinaDetailsPage({
@@ -39,7 +40,7 @@ export default async function RoslinaDetailsPage({
           <Meta label="Gatunek" value={plant.species} />
           <Meta label="Odmiana" value={plant.variety || "-"} />
           <Meta label="Oryginalna etykieta" value={plant.original_label || "-"} />
-          <Meta label="Kategoria" value={plant.category} />
+          <Meta label="Kategoria" value={categoryLabel[plant.category] ?? plant.category} />
           <Meta label="Grupa" value={group?.name ?? "-"} />
           <Meta label="Pozycja" value={`Wiersz ${plant.row_num}, kolumna ${plant.col_num}`} />
           <Meta label="Notatki" value={plant.notes || "-"} />
