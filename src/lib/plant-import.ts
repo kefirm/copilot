@@ -13,8 +13,9 @@ export interface PlantsImportSummary {
   errors: string[];
 }
 
-const MAX_ROWS = 24;
-const MAX_COLS = 120;
+const MAX_ROWS = 120;
+const MAX_COLS = 30;
+const MIN_PLANT_ROW = 40;
 
 const categoryHints: Array<{ category: Category; keywords: string[] }> = [
   { category: "potted", keywords: ["w doniczce", "w donicy", "doniczka", "donica", "patio"] },
@@ -115,6 +116,42 @@ function cleanupRemainder(value: string): string {
 
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function rowStepForCategory(category: Category): number {
+  return category === "tree" ? 3 : 2;
+}
+
+function applyVerticalSpacing(plants: DatabaseSchema["plants"], summary: PlantsImportSummary): void {
+  const byColumn = new Map<number, DatabaseSchema["plants"]>();
+
+  for (const plant of plants) {
+    if (!byColumn.has(plant.col_num)) {
+      byColumn.set(plant.col_num, []);
+    }
+    byColumn.get(plant.col_num)?.push(plant);
+  }
+
+  for (const [column, columnPlants] of byColumn) {
+    columnPlants.sort((a, b) => a.row_num - b.row_num);
+
+    let nextAllowedRow = MIN_PLANT_ROW;
+    for (const plant of columnPlants) {
+      const targetRow = Math.max(plant.row_num, nextAllowedRow);
+      if (targetRow > MAX_ROWS) {
+        summary.warnings.push(
+          `Kolumna C${column}: zabrakło miejsca na zachowanie odstępów (R>${MAX_ROWS}) dla "${plant.display_name}".`,
+        );
+        break;
+      }
+
+      if (plant.row_num !== targetRow) {
+        plant.row_num = targetRow;
+      }
+
+      nextAllowedRow = targetRow + rowStepForCategory(plant.category);
+    }
+  }
 }
 
 /**
@@ -309,7 +346,7 @@ export function importPlantsFromGrid(
       const colNum = columnIndex + 1;
       if (rowNum > MAX_ROWS || colNum > MAX_COLS) {
         summary.warnings.push(
-          `Pominięto "${originalLabel}" na pozycji R${rowNum} C${colNum}, bo wykracza poza mapę 24×120.`,
+          `Pominięto "${originalLabel}" na pozycji R${rowNum} C${colNum}, bo wykracza poza mapę 120×30.`,
         );
         continue;
       }
@@ -360,6 +397,8 @@ export function importPlantsFromGrid(
       `Zaktualizowano ${updatedPositions.length} istniejących pozycji: ${preview}${suffix}.`,
     );
   }
+
+  applyVerticalSpacing(db.plants, summary);
 
   return summary;
 }

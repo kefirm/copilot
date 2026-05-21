@@ -70,6 +70,45 @@ function isUploadedFile(value: FormDataEntryValue | null): value is File {
   return value instanceof File;
 }
 
+function toGoogleSheetParts(input: string): { sheetId: string; gid: string } {
+  const trimmed = input.trim();
+  if (!trimmed) {
+    throw new Error("Podaj link do Google Sheets.");
+  }
+
+  const url = new URL(trimmed);
+  const match = url.pathname.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
+  if (!match) {
+    throw new Error("Nieprawidłowy link Google Sheets.");
+  }
+
+  const sheetId = match[1];
+  const gidFromSearch = url.searchParams.get("gid");
+  const gidFromHash = url.hash.match(/gid=(\d+)/)?.[1];
+  const gid = gidFromSearch || gidFromHash || "0";
+
+  return { sheetId, gid };
+}
+
+function toGoogleSheetCsvExportUrl(input: string): string {
+  const { sheetId, gid } = toGoogleSheetParts(input);
+  return `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}`;
+}
+
+function toGoogleSheetGvizCsvUrl(input: string): string {
+  const { sheetId, gid } = toGoogleSheetParts(input);
+  return `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&gid=${gid}`;
+}
+
+function looksLikeGoogleLoginOrCookiePage(content: string): boolean {
+  return (
+    content.includes("ServiceLogin") ||
+    content.includes("InteractiveLogin") ||
+    content.includes("Zaloguj się na konto Google") ||
+    content.includes("Zezwól usłudze Arkusze Google na dostęp do niezbędnych plików cookie")
+  );
+}
+
 type ImportPlantsActionState = {
   status: "idle" | "success" | "error";
   message: string;
@@ -131,8 +170,8 @@ export async function createPlant(formData: FormData): Promise<void> {
   const rowNum = parseIntSafe(formData.get("row_num"));
   const colNum = parseIntSafe(formData.get("col_num"));
 
-  if (rowNum < 1 || rowNum > 24 || colNum < 1 || colNum > 120) {
-    throw new Error("Współrzędne muszą mieścić się w zakresie 1-24 (wiersz) i 1-120 (kolumna).");
+  if (rowNum < 1 || rowNum > 120 || colNum < 1 || colNum > 30) {
+    throw new Error("Współrzędne muszą mieścić się w zakresie 1-120 (wiersz) i 1-30 (kolumna).");
   }
   assertPlantPositionAvailable(db.plants, rowNum, colNum);
 
@@ -171,8 +210,8 @@ export async function updatePlant(formData: FormData): Promise<void> {
   const rowNum = parseIntSafe(formData.get("row_num"));
   const colNum = parseIntSafe(formData.get("col_num"));
 
-  if (rowNum < 1 || rowNum > 24 || colNum < 1 || colNum > 120) {
-    throw new Error("Współrzędne muszą mieścić się w zakresie 1-24 (wiersz) i 1-120 (kolumna).");
+  if (rowNum < 1 || rowNum > 120 || colNum < 1 || colNum > 30) {
+    throw new Error("Współrzędne muszą mieścić się w zakresie 1-120 (wiersz) i 1-30 (kolumna).");
   }
   assertPlantPositionAvailable(db.plants, rowNum, colNum, plantId);
 
@@ -205,6 +244,40 @@ export async function deletePlant(formData: FormData): Promise<void> {
   redirect("/rosliny");
 }
 
+export async function movePlantOnMap(formData: FormData): Promise<void> {
+  const db = await readDb();
+  const plantId = text(formData.get("plant_id"));
+  const rowNum = parseIntSafe(formData.get("row_num"));
+  const colNum = parseIntSafe(formData.get("col_num"));
+
+  if (rowNum < 1 || rowNum > 120 || colNum < 1 || colNum > 30) {
+    throw new Error("Współrzędne muszą mieścić się w zakresie 1-120 (wiersz) i 1-30 (kolumna).");
+  }
+
+  const plant = db.plants.find((p) => p.id === plantId);
+  if (!plant) {
+    return;
+  }
+
+  assertPlantPositionAvailable(db.plants, rowNum, colNum, plantId);
+  plant.row_num = rowNum;
+  plant.col_num = colNum;
+  plant.updated_at = nowIso();
+
+  await writeDb(db);
+  refreshAll();
+}
+
+export async function deletePlantOnMap(formData: FormData): Promise<void> {
+  const plantId = text(formData.get("id"));
+  const db = await readDb();
+  db.plants = db.plants.filter((p) => p.id !== plantId);
+  db.treatments = db.treatments.filter((t) => t.plant_id !== plantId);
+  db.observations = db.observations.filter((o) => o.plant_id !== plantId);
+  await writeDb(db);
+  refreshAll();
+}
+
 /**
  * Server action used by the Rośliny import form.
  * Reads either an uploaded CSV file or the bundled sample, imports grid data into local storage,
@@ -215,19 +288,78 @@ export async function importPlantsFromGridCsv(
   formData: FormData,
 ): Promise<ImportPlantsActionState> {
   try {
-    const importSource = text(formData.get("import_source")) === "sample" ? "sample" : "upload";
+    const rawImportSource = text(formData.get("import_source"));
+    const importSource =
+      rawImportSource === "sample"
+        ? "sample"
+        : rawImportSource === "google_sheet"
+          ? "google_sheet"
+          : "upload";
     let csvText = "";
     let sourceName = "";
 
     if (importSource === "sample") {
       csvText = await fs.readFile(SAMPLE_GARDEN_CSV_PATH, "utf8");
       sourceName = "przykladowy-arkusz-ogrodu.csv";
+    } else if (importSource === "google_sheet") {
+      const sheetUrl = text(formData.get("google_sheet_url"));
+      const exportUrl = toGoogleSheetCsvExportUrl(sheetUrl);
+      const gvizUrl = toGoogleSheetGvizCsvUrl(sheetUrl);
+
+      const primaryResponse = await fetch(exportUrl, {
+        cache: "no-store",
+        signal: AbortSignal.timeout(15000),
+      });
+      const primaryText = await primaryResponse.text();
+      const primaryContentType = (primaryResponse.headers.get("content-type") || "").toLowerCase();
+      const primaryLooksLikeCsv =
+        primaryContentType.includes("text/csv") ||
+        primaryContentType.includes("application/csv") ||
+        primaryContentType.includes("application/vnd.ms-excel");
+      const primaryBlocked =
+        !primaryResponse.ok ||
+        primaryResponse.url.includes("accounts.google.com") ||
+        looksLikeGoogleLoginOrCookiePage(primaryText) ||
+        !primaryLooksLikeCsv;
+
+      if (!primaryBlocked) {
+        csvText = primaryText;
+      } else {
+        const fallbackResponse = await fetch(gvizUrl, {
+          cache: "no-store",
+          signal: AbortSignal.timeout(15000),
+        });
+        const fallbackText = await fallbackResponse.text();
+        const fallbackContentType = (fallbackResponse.headers.get("content-type") || "").toLowerCase();
+        const fallbackLooksLikeCsv =
+          fallbackContentType.includes("text/csv") ||
+          fallbackContentType.includes("application/csv") ||
+          fallbackContentType.includes("application/vnd.ms-excel");
+        const fallbackBlocked =
+          !fallbackResponse.ok ||
+          fallbackResponse.url.includes("accounts.google.com") ||
+          looksLikeGoogleLoginOrCookiePage(fallbackText) ||
+          !fallbackLooksLikeCsv;
+
+        if (fallbackBlocked) {
+          return {
+            status: "error",
+            message:
+              "Nie mogę odczytać arkusza bez logowania. Ustaw udostępnienie \"Każdy, kto ma link: Wyświetlający\" i spróbuj ponownie.",
+            summary: null,
+          };
+        }
+
+        csvText = fallbackText;
+      }
+
+      sourceName = `google-sheet:${sheetUrl}`;
     } else {
       const file = formData.get("csv_file");
       if (!isUploadedFile(file) || file.size === 0) {
         return {
           status: "error",
-          message: "Wybierz plik CSV albo użyj przykładu z repo.",
+          message: "Wybierz plik CSV, podaj link Google Sheets albo użyj przykładu z repo.",
           summary: null,
         };
       }
@@ -355,6 +487,7 @@ export async function createTreatment(formData: FormData): Promise<void> {
     unit: text(formData.get("unit")),
     reason: text(formData.get("reason")),
     notes: text(formData.get("notes")),
+    completed_at: null,
     created_at: timestamp,
     updated_at: timestamp,
   });
@@ -389,6 +522,7 @@ export async function updateTreatment(formData: FormData): Promise<void> {
   treatment.unit = text(formData.get("unit"));
   treatment.reason = text(formData.get("reason"));
   treatment.notes = text(formData.get("notes"));
+  treatment.completed_at = treatment.completed_at ?? null;
   treatment.updated_at = nowIso();
 
   await writeDb(db);
@@ -403,6 +537,21 @@ export async function deleteTreatment(formData: FormData): Promise<void> {
   await writeDb(db);
   refreshAll();
   redirect("/zabiegi");
+}
+
+export async function toggleTreatmentCompleted(formData: FormData): Promise<void> {
+  const treatmentId = text(formData.get("id"));
+  const db = await readDb();
+  const treatment = db.treatments.find((t) => t.id === treatmentId);
+  if (!treatment) {
+    return;
+  }
+
+  treatment.completed_at = treatment.completed_at ? null : nowIso();
+  treatment.updated_at = nowIso();
+
+  await writeDb(db);
+  refreshAll();
 }
 
 export async function createObservation(formData: FormData): Promise<void> {

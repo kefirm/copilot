@@ -43,6 +43,16 @@ export function PlantImportForm() {
           <input type="file" name="csv_file" accept=".csv,text/csv" className="max-w-xl" />
         </label>
 
+        <label className="flex flex-col gap-1 text-sm">
+          Link do Google Sheets (odczyt)
+          <input
+            type="url"
+            name="google_sheet_url"
+            placeholder="https://docs.google.com/spreadsheets/d/.../edit?gid=0#gid=0"
+            className="max-w-xl"
+          />
+        </label>
+
         <div className="flex flex-wrap gap-2">
           <button
             type="submit"
@@ -61,6 +71,15 @@ export function PlantImportForm() {
             className="rounded-md border px-4 py-2 text-sm disabled:opacity-60"
           >
             Załaduj przykład z repo
+          </button>
+          <button
+            type="submit"
+            name="import_source"
+            value="google_sheet"
+            disabled={pending}
+            className="rounded-md border px-4 py-2 text-sm disabled:opacity-60"
+          >
+            Importuj z Google Sheets
           </button>
           <a href="/examples/przykladowy-arkusz-ogrodu.csv" download className="rounded-md border px-4 py-2 text-sm">
             Pobierz przykład CSV

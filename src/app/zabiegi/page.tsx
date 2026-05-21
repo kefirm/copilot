@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { deleteTreatment } from "@/lib/actions";
+import { deleteTreatment, toggleTreatmentCompleted } from "@/lib/actions";
 import { readDb } from "@/lib/db";
 import { formatDate } from "@/lib/utils";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
@@ -28,6 +28,7 @@ export default async function ZabiegiPage() {
         <table>
           <thead>
             <tr>
+              <th>Status</th>
               <th>Data</th>
               <th>Typ</th>
               <th>Cel</th>
@@ -40,11 +41,26 @@ export default async function ZabiegiPage() {
           <tbody>
             {db.treatments.length === 0 ? (
               <tr>
-                <td colSpan={7}>Brak zabiegów.</td>
+                <td colSpan={8}>Brak zabiegów.</td>
               </tr>
             ) : (
               db.treatments.map((treatment) => (
                 <tr key={treatment.id}>
+                  <td>
+                    <form action={toggleTreatmentCompleted}>
+                      <input type="hidden" name="id" value={treatment.id} />
+                      <button
+                        type="submit"
+                        className={`rounded border px-2 py-1 text-xs ${
+                          treatment.completed_at
+                            ? "border-emerald-300 bg-emerald-50 text-emerald-700"
+                            : "border-zinc-300 bg-white text-zinc-700"
+                        }`}
+                      >
+                        {treatment.completed_at ? "Ukończone" : "Do zrobienia"}
+                      </button>
+                    </form>
+                  </td>
                   <td>{formatDate(treatment.date)}</td>
                   <td>{typeLabel[treatment.treatment_type] ?? treatment.treatment_type}</td>
                   <td>
