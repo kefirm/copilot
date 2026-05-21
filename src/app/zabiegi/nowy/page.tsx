@@ -1,8 +1,21 @@
 import Link from "next/link";
 import { createTreatment } from "@/lib/actions";
 import { readDb } from "@/lib/db";
+import { READ_ONLY_MESSAGE, isReadOnlyModeEnabled } from "@/lib/read-only";
 
 export default async function NowyZabiegPage() {
+  if (isReadOnlyModeEnabled()) {
+    return (
+      <div className="space-y-4">
+        <h1 className="text-2xl font-semibold">Nowy zabieg</h1>
+        <div className="rounded-lg border border-zinc-200 bg-white p-4 text-sm text-zinc-700">{READ_ONLY_MESSAGE}</div>
+        <Link href="/zabiegi" className="text-sm text-zinc-600 hover:underline">
+          ← Wróć do listy zabiegów
+        </Link>
+      </div>
+    );
+  }
+
   const db = await readDb();
 
   return (

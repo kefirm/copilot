@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { updateProduct } from "@/lib/actions";
 import { readDb } from "@/lib/db";
+import { READ_ONLY_MESSAGE, isReadOnlyModeEnabled } from "@/lib/read-only";
 
 export default async function EdytujProduktPage({
   params,
@@ -12,6 +13,17 @@ export default async function EdytujProduktPage({
   const db = await readDb();
   const product = db.products.find((item) => item.id === id);
   if (!product) return notFound();
+  if (isReadOnlyModeEnabled()) {
+    return (
+      <div className="space-y-4">
+        <h1 className="text-2xl font-semibold">Edycja produktu</h1>
+        <div className="rounded-lg border border-zinc-200 bg-white p-4 text-sm text-zinc-700">{READ_ONLY_MESSAGE}</div>
+        <Link href="/produkty" className="text-sm text-zinc-600 hover:underline">
+          ← Wróć do listy produktów
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-4">

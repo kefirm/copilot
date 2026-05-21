@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { updatePlant } from "@/lib/actions";
 import { readDb } from "@/lib/db";
 import { categoryOptions } from "@/lib/plants";
+import { READ_ONLY_MESSAGE, isReadOnlyModeEnabled } from "@/lib/read-only";
 
 export default async function EdytujRoslinePage({
   params,
@@ -13,6 +14,17 @@ export default async function EdytujRoslinePage({
   const db = await readDb();
   const plant = db.plants.find((item) => item.id === id);
   if (!plant) return notFound();
+  if (isReadOnlyModeEnabled()) {
+    return (
+      <div className="space-y-4">
+        <h1 className="text-2xl font-semibold">Edycja rośliny</h1>
+        <div className="rounded-lg border border-zinc-200 bg-white p-4 text-sm text-zinc-700">{READ_ONLY_MESSAGE}</div>
+        <Link href={`/rosliny/${plant.id}`} className="text-sm text-zinc-600 hover:underline">
+          ← Wróć do szczegółów rośliny
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-4">

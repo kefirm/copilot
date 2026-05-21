@@ -59,7 +59,7 @@
   ],
   "plants": [
     {
-      "id": "a0e45e95-983b-4ed4-a9a1-e788d9610d76",
+      "id": "8e9eb209-a016-43c0-85ce-9873fed3ed63",
       "display_name": "Śliwa Cacanska Lepotica",
       "species": "Śliwa",
       "variety": "Cacanska Lepotica",
@@ -69,11 +69,11 @@
       "row_num": 40,
       "col_num": 4,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "d0225dd6-4967-4a77-a95a-bb9a903b37e4",
+      "id": "6cd646c5-6df1-4fb9-a2d2-ea5666c191dd",
       "display_name": "Śliwomorela Plumcot",
       "species": "Śliwomorela",
       "variety": "Plumcot",
@@ -83,11 +83,11 @@
       "row_num": 40,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "bebb6065-1c65-49e6-bec3-006225ceb6f2",
+      "id": "3e50e403-f918-41b8-bd2e-605c1c35ced3",
       "display_name": "Śliwa Cacanska Najbolia",
       "species": "Śliwa",
       "variety": "Cacanska Najbolia",
@@ -97,11 +97,11 @@
       "row_num": 40,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "2c0cbc3d-3042-44c9-a442-b4404ab2cff0",
+      "id": "277255b6-4f54-439c-8004-9feb707c2298",
       "display_name": "Czereśnia karłowa Prunus avium 'Van'",
       "species": "Czereśnia",
       "variety": "karłowa Prunus avium 'Van'",
@@ -111,11 +111,11 @@
       "row_num": 40,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "73434704-6461-4c64-aeae-795c7e4e716b",
+      "id": "b42c2ba4-c7e7-4af1-95b7-5c5206b4d808",
       "display_name": "Śliwa karłowa Prunus domestica 'Węgierka Zwykła'",
       "species": "Śliwa",
       "variety": "karłowa Prunus domestica 'Węgierka Zwykła'",
@@ -125,11 +125,11 @@
       "row_num": 40,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "36b2d09e-8086-4aa4-a369-d1539b1d9dc5",
+      "id": "2aa2198e-5056-4b2c-879b-82eb7c964ce1",
       "display_name": "Wiśnia Sabina",
       "species": "Wiśnia",
       "variety": "Sabina",
@@ -139,11 +139,11 @@
       "row_num": 41,
       "col_num": 2,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "3a9ad2dc-1a35-425b-893e-5881116ced93",
+      "id": "fb46ab6f-de1d-4102-abd4-1feec974d53c",
       "display_name": "Grusza kolumnowa Decora",
       "species": "Grusza",
       "variety": "kolumnowa Decora",
@@ -153,11 +153,11 @@
       "row_num": 41,
       "col_num": 4,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "a87d18b5-bea0-48b8-8479-81fae8271d57",
+      "id": "f15d75ca-b23a-4997-946b-faebbf547f32",
       "display_name": "nie wiadomo - grusza",
       "species": "Grusza",
       "variety": "nie wiadomo",
@@ -167,11 +167,11 @@
       "row_num": 41,
       "col_num": 5,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "4f5d73bb-48e0-46a8-adc8-a5b9224c5656",
+      "id": "f7f1c559-df0d-4712-8435-27bd4ca3fa7b",
       "display_name": "Jabłoń kolumnowa Vesna",
       "species": "Jabłoń",
       "variety": "kolumnowa Vesna",
@@ -181,11 +181,11 @@
       "row_num": 41,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "c90e3251-c761-47ba-8d74-64c870103bd1",
+      "id": "81a8a782-370f-48e1-a3cf-b4fae17190ce",
       "display_name": "Jabłoń Ligol",
       "species": "Jabłoń",
       "variety": "Ligol",
@@ -195,11 +195,11 @@
       "row_num": 41,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "114638ff-796e-401b-a215-62c354ae8454",
+      "id": "293740e0-1b21-449a-a2f7-4c88b50fcc76",
       "display_name": "Śliwa President",
       "species": "Śliwa",
       "variety": "President",
@@ -209,11 +209,11 @@
       "row_num": 41,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "e975ff2a-88b9-401b-9605-af9cfa74f0be",
+      "id": "45283a69-0767-425a-a797-d7f674b9719b",
       "display_name": "Śliwa President",
       "species": "Śliwa",
       "variety": "President",
@@ -223,11 +223,11 @@
       "row_num": 41,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "91b70d63-ab93-49b4-bcec-5b8a6d934b85",
+      "id": "3d09d9d3-8a38-41a2-9570-4b281a3ec957",
       "display_name": "Śliwa",
       "species": "Śliwa",
       "variety": "",
@@ -237,11 +237,11 @@
       "row_num": 41,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "bdc828f6-c032-4ed1-bc83-aee2653dc7b9",
+      "id": "7741dcc4-c5e0-407e-8c67-b10c495922a3",
       "display_name": "Jabłoń karłowa Idared",
       "species": "Jabłoń",
       "variety": "karłowa Idared",
@@ -251,11 +251,11 @@
       "row_num": 42,
       "col_num": 1,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "0afe5cc1-c8a4-4aa1-8ef9-9d478f2a55c5",
+      "id": "f060646c-fcc1-4901-a665-d19785652e9a",
       "display_name": "Wiśnia Lucyna",
       "species": "Wiśnia",
       "variety": "Lucyna",
@@ -265,11 +265,11 @@
       "row_num": 42,
       "col_num": 5,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "16b440a5-1624-4ff5-b998-d41b774bb513",
+      "id": "0cc5b042-fc18-44af-968a-f75013047d41",
       "display_name": "Czereśnia Sweetheart",
       "species": "Czereśnia",
       "variety": "Sweetheart",
@@ -279,11 +279,11 @@
       "row_num": 42,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "3507d356-3f07-4304-984f-6d974ec842bf",
+      "id": "c9c84112-4bcc-4618-941c-da53e795174d",
       "display_name": "Czereśnia Sunburst",
       "species": "Czereśnia",
       "variety": "Sunburst",
@@ -293,11 +293,11 @@
       "row_num": 42,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "6376d53f-2018-4298-a16b-dbafb485b219",
+      "id": "38daf320-2b2e-486a-9e82-2a8517390539",
       "display_name": "Wiśnia debreceni",
       "species": "Wiśnia",
       "variety": "debreceni",
@@ -307,11 +307,11 @@
       "row_num": 42,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "0b3de3ff-a8f2-493e-a6b1-fbd9c3d6be6b",
+      "id": "21a0ab06-20b5-40fa-9576-6c2a5748b7fc",
       "display_name": "Grusza Bonkreta Williamsa",
       "species": "Grusza",
       "variety": "Bonkreta Williamsa",
@@ -321,11 +321,11 @@
       "row_num": 42,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "2cedb14d-4b47-4a0c-aa7e-fd3c01366d2a",
+      "id": "ffcab17b-1445-43a6-a722-a9b43588072c",
       "display_name": "Jabłoń Złota Reneta",
       "species": "Jabłoń",
       "variety": "Złota Reneta",
@@ -335,11 +335,11 @@
       "row_num": 43,
       "col_num": 1,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "e6a84e55-5983-4831-99a3-1564214d0576",
+      "id": "b42149cb-8d22-4614-83b0-7056dc826481",
       "display_name": "Grusza Konferencja",
       "species": "Grusza",
       "variety": "Konferencja",
@@ -349,11 +349,11 @@
       "row_num": 43,
       "col_num": 4,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "1ea65b35-f619-4d23-855f-f38ec79a165a",
+      "id": "66141cdc-c06b-4766-9295-3f2f81c4bb31",
       "display_name": "Grusza Generał Leclerc",
       "species": "Grusza",
       "variety": "Generał Leclerc",
@@ -363,11 +363,11 @@
       "row_num": 43,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "7a44ca1a-19aa-4c1f-b82f-9dfc3310b60e",
+      "id": "7babf4af-82af-476f-9129-3b00aac97aeb",
       "display_name": "Grusza Paryżanka",
       "species": "Grusza",
       "variety": "Paryżanka",
@@ -377,11 +377,11 @@
       "row_num": 43,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "337d4d24-d852-4a3b-af4b-3ea0b169476e",
+      "id": "a19ccb98-af6a-4fc3-bf8a-2e5363566a32",
       "display_name": "Morela karłowa Prunus armenica 'Wczesna z morden'",
       "species": "Morela",
       "variety": "karłowa Prunus armenica 'Wczesna z morden'",
@@ -391,11 +391,11 @@
       "row_num": 43,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "56b0a4ca-f36d-4f1c-ba49-cadd7c420236",
+      "id": "f2118b92-bfdf-4653-938c-e2184e71bfc9",
       "display_name": "Morela karłowa Prunus armeniaca 'Harcot'",
       "species": "Morela",
       "variety": "karłowa Prunus armeniaca 'Harcot'",
@@ -405,11 +405,11 @@
       "row_num": 43,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "7ad3f3f7-fe25-4236-b223-3e98e41933cc",
+      "id": "8e0b88d8-07ea-4d8c-8cfa-105640b412b6",
       "display_name": "Czereśnia karłowa Prunus avium 'Bawole Serce'",
       "species": "Czereśnia",
       "variety": "karłowa Prunus avium 'Bawole Serce'",
@@ -419,11 +419,11 @@
       "row_num": 44,
       "col_num": 1,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "5eedcf6b-925f-4df8-9d3b-0b32c9d454b1",
+      "id": "bcc7fa9d-a86e-4c9e-a9a6-5b0bba6e09f6",
       "display_name": "Wiśnia karłowa Prunus fruticosa 'Łutówka'",
       "species": "Wiśnia",
       "variety": "karłowa Prunus fruticosa 'Łutówka'",
@@ -433,11 +433,11 @@
       "row_num": 44,
       "col_num": 4,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "d46aee22-f42a-4508-bef6-f1cfa193e011",
+      "id": "50bf10f6-8e90-434f-b40e-e9cd293be8be",
       "display_name": "Czereśniowiśnia Meteor",
       "species": "Czereśniowiśnia",
       "variety": "Meteor",
@@ -447,11 +447,11 @@
       "row_num": 44,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "82914282-7fb2-4cfa-a4d1-953a93f0521c",
+      "id": "75ffa0c5-b167-4a5d-a0c1-a5a9a2adad1c",
       "display_name": "Brzoskwinia Jerseyland",
       "species": "Brzoskwinia",
       "variety": "Jerseyland",
@@ -461,11 +461,11 @@
       "row_num": 44,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "db23c8d7-a87e-4fe2-b40c-489b90a0c17a",
+      "id": "d6731524-f924-4270-8484-7745b6425274",
       "display_name": "Jabłoń ozdobna (gratis)",
       "species": "Jabłoń",
       "variety": "ozdobna (gratis)",
@@ -475,11 +475,11 @@
       "row_num": 44,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "d6e7c8ea-aaac-4031-813d-0b2743cd6022",
+      "id": "173b1871-87ef-4401-8175-2761c5a91dd8",
       "display_name": "Morwa Biała",
       "species": "Morwa",
       "variety": "Biała",
@@ -489,11 +489,11 @@
       "row_num": 44,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "7c5c06bd-b308-4532-b00b-388c71213e19",
+      "id": "5cd7c84b-91f7-4a92-b350-0150f40ea5b0",
       "display_name": "Nektaryna Harblaze",
       "species": "Nektaryna",
       "variety": "Harblaze",
@@ -503,11 +503,11 @@
       "row_num": 45,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "235cdcfa-1dbe-4aee-a1f3-4f32620cc87b",
+      "id": "abb37501-6725-4a18-a874-91240f1d6311",
       "display_name": "Nektaryna Durbin",
       "species": "Nektaryna",
       "variety": "Durbin",
@@ -517,11 +517,11 @@
       "row_num": 45,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "f71c9cd7-852c-4ba9-aec2-a1fe165befd7",
+      "id": "3aef25c4-0556-4985-af91-fa196d8e3032",
       "display_name": "Migdałowiec Jadalny Ferragnés",
       "species": "Migdałowiec",
       "variety": "Jadalny Ferragnés",
@@ -531,11 +531,11 @@
       "row_num": 45,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "9bb38eba-3f47-4345-b017-96cd26f04a8d",
+      "id": "f5338027-6e87-4d72-a86b-a5168508612d",
       "display_name": "Migdałowiec Jadalny Halls Hardy",
       "species": "Migdałowiec",
       "variety": "Jadalny Halls Hardy",
@@ -545,11 +545,11 @@
       "row_num": 45,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "2766f224-c441-4402-bcb0-33b6e6d0a638",
+      "id": "ea385c41-5d36-42ff-91f8-a97a64ced714",
       "display_name": "Jeżyna Bezkolcowa Navaho",
       "species": "Jeżyna",
       "variety": "Bezkolcowa Navaho",
@@ -559,11 +559,11 @@
       "row_num": 46,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "2cb93efe-1dac-4d94-a848-8ae6a5017ba8",
+      "id": "8bc94afe-42c4-4daa-8644-baa920e40ed5",
       "display_name": "Malina purpurowa",
       "species": "Malina",
       "variety": "purpurowa",
@@ -573,11 +573,11 @@
       "row_num": 47,
       "col_num": 5,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "2075c9ff-f216-47a4-b7cb-d14db8d75ef2",
+      "id": "b29818fe-8038-41f3-ae7b-b524a1fa1b0b",
       "display_name": "Malina czerwona Zewa",
       "species": "Malina",
       "variety": "czerwona Zewa",
@@ -587,25 +587,25 @@
       "row_num": 47,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "2537a79c-573a-45a2-a468-20734e453b33",
+      "id": "7a59ccab-fe9e-4463-baae-e3a28892818d",
       "display_name": "Malinotruskawka",
       "species": "Malinotruskawka",
       "variety": "",
       "original_label": "Malinotruskawka",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 47,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "a8f8a5a0-b38f-4956-8ce3-4fb1021fe3fc",
+      "id": "bee32d25-5820-41b3-97c8-11ba2d80a551",
       "display_name": "Malina Czarna Black Jewel",
       "species": "Malina",
       "variety": "Czarna Black Jewel",
@@ -615,39 +615,39 @@
       "row_num": 47,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "f934c151-ef77-49cd-8dc8-9b01a78493af",
+      "id": "992525f9-b91d-49ab-820d-f62d913d8c89",
       "display_name": "Maliny",
       "species": "Malina",
       "variety": "",
       "original_label": "Maliny",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 47,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "c2d2344c-0104-400b-abf8-eebb20b7c427",
+      "id": "09e825bb-b7fc-4d07-aa85-f87858a958d7",
       "display_name": "Maliny",
       "species": "Malina",
       "variety": "",
       "original_label": "Maliny",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 47,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "a5e23969-a363-4a61-85f2-87c9b07fc04b",
+      "id": "2d982aa3-167f-4e66-9cf0-d2aa7fc51c37",
       "display_name": "Malina czarna Black Jewel",
       "species": "Malina",
       "variety": "czarna Black Jewel",
@@ -657,11 +657,11 @@
       "row_num": 48,
       "col_num": 5,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "6b70feab-984d-439a-a634-1cb0c1f94f61",
+      "id": "09cac825-1020-4c0d-a443-dc5a32fadce1",
       "display_name": "Malina Rubus Ideaus L. 'Wilamette'",
       "species": "Malina",
       "variety": "Rubus Ideaus L. 'Wilamette'",
@@ -671,11 +671,11 @@
       "row_num": 48,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "626f8720-11c9-4a0b-97ed-1483d4309f62",
+      "id": "c342e695-e418-4972-845b-8a08b4e03d67",
       "display_name": "Malina Żołta Rubus Ideaus L. 'Golden Queen'",
       "species": "Malina",
       "variety": "Żołta Rubus Ideaus L. 'Golden Queen'",
@@ -685,11 +685,11 @@
       "row_num": 48,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "112211f1-c6e1-44f9-b13f-f586bfe08db3",
+      "id": "1672d03c-5505-4891-9a06-fb56d06619ca",
       "display_name": "Malina Czarna Rubus Ideaus L. 'Black Jewel'",
       "species": "Malina",
       "variety": "Czarna Rubus Ideaus L. 'Black Jewel'",
@@ -699,39 +699,39 @@
       "row_num": 48,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "c68f825d-d9f0-4c5c-945c-fb56cbeb34f0",
+      "id": "3ca9c1e1-91fc-4048-af6c-a71c84990be1",
       "display_name": "Maliny",
       "species": "Malina",
       "variety": "",
       "original_label": "Maliny",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 48,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "d379e863-08bc-43cb-8621-576d3bf94be5",
+      "id": "9b077a2c-da41-4f04-97e2-34a0f8df289f",
       "display_name": "Maliny",
       "species": "Malina",
       "variety": "",
       "original_label": "Maliny",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 48,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "45a9984a-1ef8-40a7-9833-041407a551c5",
+      "id": "f702ef28-b117-4407-8951-e75a63ae3352",
       "display_name": "Issai Arguta Ostrolistna",
       "species": "Kiwi",
       "variety": "Issai Ostrolistna",
@@ -741,11 +741,11 @@
       "row_num": 48,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "0ed2ebdd-0fe4-42a4-8856-245defe883fc",
+      "id": "227c9130-dde2-467f-836f-8355c48b72a8",
       "display_name": "Agrest Biały Krzaczasty Krasnosłowiański",
       "species": "Agrest",
       "variety": "Biały Krzaczasty Krasnosłowiański",
@@ -755,11 +755,11 @@
       "row_num": 49,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "f2e32317-7d24-4e30-bf0d-c7a7ad4864bd",
+      "id": "ddfb78a4-18ca-4d99-b577-a34fac503940",
       "display_name": "Jagoda Goji Amber Sweet",
       "species": "Jagoda Goji",
       "variety": "Amber Sweet",
@@ -769,11 +769,11 @@
       "row_num": 49,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "6c372b8c-7d44-4db7-bc2e-798501bd5dc4",
+      "id": "9d9e5e3a-df41-4a4f-809a-f21d7468ca15",
       "display_name": "Jagoda Goji Amber Sweet",
       "species": "Jagoda Goji",
       "variety": "Amber Sweet",
@@ -783,11 +783,11 @@
       "row_num": 49,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "65842373-9cf1-400f-8f1b-952dc2b3cdd3",
+      "id": "5deeb0c5-1f6a-4958-b753-ea076d854544",
       "display_name": "Aronia",
       "species": "Aronia",
       "variety": "",
@@ -797,11 +797,11 @@
       "row_num": 49,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "deb8dbec-c560-43a7-b43f-cbab4b7d5ef4",
+      "id": "14ae8490-dfc2-48ac-aa3e-cf4b3f2d13c6",
       "display_name": "Czarna porzeczka",
       "species": "Porzeczka",
       "variety": "Czarna",
@@ -811,11 +811,11 @@
       "row_num": 49,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "1eb9fa37-8016-426d-831a-59807cf0a454",
+      "id": "18990960-2b99-4f25-9ca3-4f00f85e7b95",
       "display_name": "Weiki Ostrolistna Zapylacz",
       "species": "Kiwi",
       "variety": "Weiki Zapylacz",
@@ -825,11 +825,11 @@
       "row_num": 49,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "a4b22a7d-b0a3-4093-b320-dbe6dacbaeee",
+      "id": "e85373b3-ea14-4e11-8a23-c17e42566b79",
       "display_name": "Agrest czerwony krzaczasty",
       "species": "Agrest",
       "variety": "czerwony krzaczasty",
@@ -839,11 +839,11 @@
       "row_num": 50,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "0d1a5517-4cac-49e9-9015-c80961d18bd9",
+      "id": "db3e2352-b291-4195-abbc-dde4deef17ef",
       "display_name": "Agrest Krzaczasty Ribes Uva- Crispa 'Krasnosłowiański' Zielony",
       "species": "Agrest",
       "variety": "Krzaczasty Ribes Uva- Crispa 'Krasnosłowiański' Zielony",
@@ -853,11 +853,11 @@
       "row_num": 50,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "7cfec6e5-3817-4771-877c-d36d23246758",
+      "id": "fe09b8a7-931e-4e37-b2b4-0a1d8d0917d5",
       "display_name": "Czarna porzeczka titania",
       "species": "Porzeczka",
       "variety": "Czarna titania",
@@ -867,11 +867,11 @@
       "row_num": 50,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "173d91af-29ca-45e5-830c-fec5f4b89a58",
+      "id": "ebac0f2a-85f8-4ea2-8718-43688d21d32a",
       "display_name": "Czerwona porzeczka JONKHEER VAN TETS",
       "species": "Porzeczka",
       "variety": "Czerwona JONKHEER VAN TETS",
@@ -881,11 +881,11 @@
       "row_num": 50,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "70eae960-ee88-437f-9758-7822d5d0c160",
+      "id": "dfd54444-bf6f-4388-9480-c548ed9e0b72",
       "display_name": "Czarna porzeczka",
       "species": "Porzeczka",
       "variety": "Czarna",
@@ -895,11 +895,11 @@
       "row_num": 50,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "bd03abde-368a-4df1-bcb8-fdb2477d7ae2",
+      "id": "a0f38ac8-c4df-4fd6-8d9f-0369606251ba",
       "display_name": "Dr Szymanowski Ostrolistna Obupłciowa",
       "species": "Kiwi",
       "variety": "Dr Szymanowski Obupłciowa",
@@ -909,11 +909,11 @@
       "row_num": 50,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "e5f6c1c3-887b-4b77-9c44-c6017cf8d4a1",
+      "id": "3b6fbaea-8309-499b-8630-fa698e5685fc",
       "display_name": "nie wiadomo, były liście",
       "species": "nie",
       "variety": "wiadomo, były liście",
@@ -923,11 +923,11 @@
       "row_num": 51,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "d7fa86c7-2e96-4361-8d68-b94356eebfb4",
+      "id": "499c7cf7-54ab-4239-9e2d-40a10c022b05",
       "display_name": "Agrest czerwony krzaczasty",
       "species": "Agrest",
       "variety": "czerwony krzaczasty",
@@ -937,11 +937,11 @@
       "row_num": 52,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "53f21cc4-1433-42bb-b611-34683d753c38",
+      "id": "74d91f3f-e5dd-4634-9b2f-e81c75ba3a28",
       "display_name": "Malina Poemat",
       "species": "Malina",
       "variety": "Poemat",
@@ -951,11 +951,11 @@
       "row_num": 52,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "c03c2422-1f9e-4d04-b429-106efc332735",
+      "id": "f3b992ba-0d92-4f37-a53d-5ba560ec4fe3",
       "display_name": "Malina Rubus Ideaus L. 'Veten'",
       "species": "Malina",
       "variety": "Rubus Ideaus L. 'Veten'",
@@ -965,11 +965,11 @@
       "row_num": 52,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "9c827c61-a576-443c-b546-833509711bd2",
+      "id": "34c26858-88e0-4739-969b-03035d71af95",
       "display_name": "Malina",
       "species": "Malina",
       "variety": "",
@@ -979,11 +979,11 @@
       "row_num": 52,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "131a1192-86bc-4276-809c-76b91008ef0a",
+      "id": "371806f2-7b8f-484e-9149-e8086ab44b64",
       "display_name": "Jagoda Goji Sweet Berry",
       "species": "Jagoda Goji",
       "variety": "Sweet Berry",
@@ -993,11 +993,11 @@
       "row_num": 52,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "23259f06-a97f-4220-ad66-1cb875449a5a",
+      "id": "5fd08c89-bec3-442d-889c-6ad31a18fea5",
       "display_name": "Geneva Ostrolistna Żeńska",
       "species": "Kiwi",
       "variety": "Geneva Żeńska",
@@ -1007,11 +1007,11 @@
       "row_num": 52,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "f8f092f4-f31c-4990-933e-7a4ce2f16a7b",
+      "id": "ddac96fc-0453-4013-bad8-8b04eec74c0e",
       "display_name": "Porzeczka czarna",
       "species": "Porzeczka",
       "variety": "czarna",
@@ -1021,11 +1021,11 @@
       "row_num": 53,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "36453f93-770f-48c4-b812-aac5c664383a",
+      "id": "66c55c72-4e35-4ef2-bb46-489d7bba25ad",
       "display_name": "Malina Letnia",
       "species": "Malina",
       "variety": "Letnia",
@@ -1035,11 +1035,11 @@
       "row_num": 53,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "dcfc1eec-1e18-4c37-9087-8b7c88e0909e",
+      "id": "d55b8efc-b1c0-49a0-a388-6a2c20aaf855",
       "display_name": "Malina Rubus Ideaus L. 'Veten'",
       "species": "Malina",
       "variety": "Rubus Ideaus L. 'Veten'",
@@ -1049,25 +1049,25 @@
       "row_num": 53,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "d30ab97b-dd6b-4135-9d13-7d99fa71e0da",
+      "id": "53455807-0031-488d-b5e5-b19f184c37b1",
       "display_name": "Maliny",
       "species": "Malina",
       "variety": "",
       "original_label": "Maliny",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 53,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "d2bd3531-80fa-4e9e-8be4-e4bd70583778",
+      "id": "736746ca-bd15-45d8-a1ce-504f59b03dc9",
       "display_name": "Borówka",
       "species": "Borówka",
       "variety": "",
@@ -1077,11 +1077,11 @@
       "row_num": 53,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "74298ab2-8df4-4989-bfac-8f41953d31d6",
+      "id": "ee43ef41-3f09-4de8-93dc-72c4d835916f",
       "display_name": "Atlas smakowita zapylacz",
       "species": "Kiwi",
       "variety": "Atlas zapylacz",
@@ -1091,11 +1091,11 @@
       "row_num": 53,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "f3f4b18a-d20e-4591-89f7-c045d46ed733",
+      "id": "d3753f54-9eba-4cde-a7ff-8767269e4f83",
       "display_name": "nie wiadomo, słabe pączki",
       "species": "nie",
       "variety": "wiadomo, słabe pączki",
@@ -1105,11 +1105,11 @@
       "row_num": 54,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "a94a8504-11bc-4218-a4b6-cc40120f45ee",
+      "id": "126351bc-e10c-493d-a350-ab636f382a60",
       "display_name": "Malina czarna Bristol",
       "species": "Malina",
       "variety": "czarna Bristol",
@@ -1119,11 +1119,11 @@
       "row_num": 55,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "00c99a3c-0d7f-4c02-8d06-d83fc7ede2d9",
+      "id": "47ac0024-fd78-4468-b8db-da460ffac97c",
       "display_name": "Malina czarna Black Jewel",
       "species": "Malina",
       "variety": "czarna Black Jewel",
@@ -1133,11 +1133,11 @@
       "row_num": 55,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "989f7805-5dd7-4623-b367-4fc129781f57",
+      "id": "a3587b2d-4731-4954-a97f-c950537e8a59",
       "display_name": "Malina Rubus Ideaus L. 'Tule'",
       "species": "Malina",
       "variety": "Rubus Ideaus L. 'Tule'",
@@ -1147,25 +1147,25 @@
       "row_num": 55,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "876b4893-5979-4880-afb3-cb6af04fdf70",
+      "id": "64aad709-dc99-4f08-b3de-416699d13277",
       "display_name": "Maliny",
       "species": "Malina",
       "variety": "",
       "original_label": "Maliny",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 55,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "d8e49141-bcfb-47d1-9923-40b1bc081b90",
+      "id": "3f5de3f5-9ac5-4bd5-973f-765262608abb",
       "display_name": "Borówka",
       "species": "Borówka",
       "variety": "",
@@ -1175,25 +1175,25 @@
       "row_num": 55,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "965995b8-17d4-4ff6-9039-de856cdbe0dd",
+      "id": "93868649-d280-4e1f-b999-b346f6520f7d",
       "display_name": "Sentabrskaya żeńska",
       "species": "Kiwi",
       "variety": "żeńska",
       "original_label": "Sentabrskaya żeńska",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 55,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "ce80bfef-3e31-44a6-a867-ea3a6728f7bd",
+      "id": "bf27cc84-184c-4519-be7d-a95a2cb0faf9",
       "display_name": "Borówka Amerykańska 'Spartan'",
       "species": "Borówka",
       "variety": "Amerykańska 'Spartan'",
@@ -1203,11 +1203,11 @@
       "row_num": 56,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "86d3a310-cd7a-43a9-9b7e-ef8cd3c4df65",
+      "id": "b8831cb2-961a-4fcc-b130-fae351e92c54",
       "display_name": "Borówka Amerykańska Vaccinium Corymbosum 'Berkley'",
       "species": "Borówka",
       "variety": "Amerykańska Vaccinium Corymbosum 'Berkley'",
@@ -1217,11 +1217,11 @@
       "row_num": 56,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "65b0152a-1132-4e7d-a0c5-99075745eb14",
+      "id": "fcc84f57-f560-47e3-a9c9-26c964e13b21",
       "display_name": "Malina Rubus Ideaus L. 'Tule'",
       "species": "Malina",
       "variety": "Rubus Ideaus L. 'Tule'",
@@ -1231,25 +1231,25 @@
       "row_num": 56,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "d5d52146-05a4-4772-955b-45d58ce7a939",
+      "id": "68c38cbc-8f61-4064-9cee-89a4522d5c4a",
       "display_name": "Maliny",
       "species": "Malina",
       "variety": "",
       "original_label": "Maliny",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 56,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "fd65be0e-7e3f-4d4a-a739-1f8376c7524f",
+      "id": "97da0611-b53f-4bb8-b0fb-e4e8a73bbf6e",
       "display_name": "Borówka",
       "species": "Borówka",
       "variety": "",
@@ -1259,11 +1259,11 @@
       "row_num": 56,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "fe4f768f-fdd3-415e-a419-b265bd92c811",
+      "id": "b1d897d7-8850-4a78-8acf-fbce596d99da",
       "display_name": "Lucy ostrolistna żeńska",
       "species": "Kiwi",
       "variety": "Lucy żeńska",
@@ -1273,11 +1273,11 @@
       "row_num": 56,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "c211e601-64d5-42a0-b120-ddede1062502",
+      "id": "1d594364-d4dd-40ed-b46b-065c3439abb9",
       "display_name": "Borówka Amerykańska 'Duke'",
       "species": "Borówka",
       "variety": "Amerykańska 'Duke'",
@@ -1287,11 +1287,11 @@
       "row_num": 57,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "9328cb81-2868-4de5-b509-3cd95703cc59",
+      "id": "8ea77d3f-1e76-49c0-b040-7a03b31e90a7",
       "display_name": "Borówka Amerykańska 'Sierra'",
       "species": "Borówka",
       "variety": "Amerykańska 'Sierra'",
@@ -1301,11 +1301,11 @@
       "row_num": 57,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "ca839d89-a262-4033-92b9-ef49ad263afa",
+      "id": "cf7eb567-7e5a-4c6c-b790-2d0a07229231",
       "display_name": "Borówka Amerykańska 'Northland'",
       "species": "Borówka",
       "variety": "Amerykańska 'Northland'",
@@ -1315,11 +1315,11 @@
       "row_num": 57,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "49ba8578-3f0f-434f-b40f-06435924eed8",
+      "id": "10c2b30e-e3c5-41eb-ad1d-47bf88109dd3",
       "display_name": "Borówka Spartan",
       "species": "Borówka",
       "variety": "Spartan",
@@ -1329,11 +1329,11 @@
       "row_num": 57,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "2b803357-b8ad-41ef-afba-4af0d0c94b53",
+      "id": "ba5fc8c8-957c-47bf-9d97-b6c2969e42c0",
       "display_name": "Borówka",
       "species": "Borówka",
       "variety": "",
@@ -1343,25 +1343,25 @@
       "row_num": 57,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "dee79784-f690-4caa-b9f0-47f9256d5502",
+      "id": "b76f7610-3ac4-48f9-898f-941598afc031",
       "display_name": "Kens red",
       "species": "Kiwi",
       "variety": "red",
       "original_label": "Kens red",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 57,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "fedaccb4-ff6d-4bf8-bd7e-fed890cc5c90",
+      "id": "39ca3f99-8218-4272-8217-7976e9956c1f",
       "display_name": "Borówka Amerykańska 'Earliblue'",
       "species": "Borówka",
       "variety": "Amerykańska 'Earliblue'",
@@ -1371,11 +1371,11 @@
       "row_num": 58,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "69e2582a-39ac-48d2-b603-5df975489a0e",
+      "id": "4ae405e1-6f81-4792-8d90-21b54518c00d",
       "display_name": "Borówka Amerykańska 'Patriot'",
       "species": "Borówka",
       "variety": "Amerykańska 'Patriot'",
@@ -1385,11 +1385,11 @@
       "row_num": 58,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "3364cea5-40eb-4ce0-a498-6c8c587299c1",
+      "id": "9ed491ba-76c2-4f39-8f2b-45f4a76b0c08",
       "display_name": "Borówka Amerykańska 'Nelson'",
       "species": "Borówka",
       "variety": "Amerykańska 'Nelson'",
@@ -1399,11 +1399,11 @@
       "row_num": 58,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "0cb6476c-28b5-45a3-a3a3-b7bc9b8b343a",
+      "id": "44ba4034-0ac3-4d14-a352-2e35e1d86a03",
       "display_name": "Borówka amerykańska Pink Lemonade",
       "species": "Borówka",
       "variety": "amerykańska Pink Lemonade",
@@ -1413,11 +1413,11 @@
       "row_num": 58,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "f3b943df-9c81-4e12-8b02-c8e255521704",
+      "id": "1e0a0547-8c67-494e-9dbc-ecd60eca1c69",
       "display_name": "Borówka",
       "species": "Borówka",
       "variety": "",
@@ -1427,25 +1427,25 @@
       "row_num": 58,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "5f92c322-ce7e-4b4b-a18b-c768b65d1a58",
+      "id": "f0b0933b-eb50-4519-95b9-2b8374f351e1",
       "display_name": "Adam zapylacz",
       "species": "Kiwi",
       "variety": "zapylacz",
       "original_label": "Adam zapylacz",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 58,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "2c4ab1c4-ded3-49be-95dd-380dd0b8617b",
+      "id": "9651c40b-7f4c-48e1-bd2c-de3b4b9005f4",
       "display_name": "Borówka Amerykańska 'Toro'",
       "species": "Borówka",
       "variety": "Amerykańska 'Toro'",
@@ -1455,39 +1455,39 @@
       "row_num": 59,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "4fdef894-9c80-40a7-941e-f9eafa1003b8",
+      "id": "b43606cb-b0dc-477c-9252-30bb6cffba45",
       "display_name": "Jagoda Kamczacka 'Karina'",
       "species": "Jagoda Kamczacka",
       "variety": "'Karina'",
       "original_label": "Jagoda Kamczacka 'Karina'",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-neutral",
       "row_num": 59,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "6933cce4-9793-4256-9ce5-87e58a217942",
+      "id": "2fdfda59-006e-4c6d-9642-ae8ba0d3ff67",
       "display_name": "Jagoda Kamczacka 'Tola'",
       "species": "Jagoda Kamczacka",
       "variety": "'Tola'",
       "original_label": "Jagoda Kamczacka 'Tola'",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-neutral",
       "row_num": 59,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "53263f78-b957-47f4-a254-3515d63d1563",
+      "id": "c0f0952f-6340-42e4-840e-207377d3483d",
       "display_name": "Pigwowiec Japoński Sargentii",
       "species": "Pigwowiec",
       "variety": "Japoński Sargentii",
@@ -1497,11 +1497,11 @@
       "row_num": 59,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "69d6b2ce-5b31-457f-892b-bb0d2cc7c0a4",
+      "id": "b24c79d2-f56a-4d04-91a4-90e75b348ac2",
       "display_name": "Pigwowiec",
       "species": "Pigwowiec",
       "variety": "",
@@ -1511,11 +1511,11 @@
       "row_num": 59,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "a5f96abe-bb85-4f8c-887b-306600bbb88e",
+      "id": "13660e8d-312d-42b1-a6e9-f628b97795e0",
       "display_name": "Kiwi Jadalne 'Purpurna Sadowa Żeńska'",
       "species": "Kiwi",
       "variety": "Jadalne 'Purpurna Sadowa Żeńska'",
@@ -1525,53 +1525,53 @@
       "row_num": 59,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "82d97255-0ae6-4cf1-bd36-13b838496a28",
+      "id": "b1b50b6e-bcde-48db-87c7-b977d733fd6c",
       "display_name": "Jagoda Kamczacka 'Zojka'",
       "species": "Jagoda Kamczacka",
       "variety": "'Zojka'",
       "original_label": "Jagoda Kamczacka 'Zojka'",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-neutral",
       "row_num": 60,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "76ba8597-ab18-4642-9313-b4f97890532b",
+      "id": "2fbc9124-54c6-4996-823b-08a1684c44f7",
       "display_name": "Jagoda Kamczacka 'Wojtek'",
       "species": "Jagoda Kamczacka",
       "variety": "'Wojtek'",
       "original_label": "Jagoda Kamczacka 'Wojtek'",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-neutral",
       "row_num": 60,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "5795a523-ceef-4445-8bbd-349646d186e7",
+      "id": "041cf86e-2ff2-40af-86a7-d818a98dab18",
       "display_name": "Jagoda Kamczacka 'Tola'",
       "species": "Jagoda Kamczacka",
       "variety": "'Tola'",
       "original_label": "Jagoda Kamczacka 'Tola'",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-neutral",
       "row_num": 60,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "4115a00f-20f8-41cf-93f5-8881c49af4f8",
+      "id": "37671ed9-914a-4215-ba79-a399646dc94c",
       "display_name": "Pigwowiec Japoński Sargentii",
       "species": "Pigwowiec",
       "variety": "Japoński Sargentii",
@@ -1581,11 +1581,11 @@
       "row_num": 60,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "7c135ac1-bd14-4146-a657-8e1e8d09af32",
+      "id": "b64d066a-1bfb-4e76-a7da-81ac85436d16",
       "display_name": "Pigwowiec",
       "species": "Pigwowiec",
       "variety": "",
@@ -1595,67 +1595,67 @@
       "row_num": 60,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "7a460263-38fc-4a1f-83c1-1ad224a425ff",
+      "id": "62f725da-ba4a-4e87-9146-622be07ffe51",
       "display_name": "Sentabrskaya żeńska",
       "species": "Kiwi",
       "variety": "żeńska",
       "original_label": "Sentabrskaya żeńska",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-raspberry-kiwi",
       "row_num": 60,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "cf9a099f-23b3-4ba5-95b9-805fbfd76c21",
+      "id": "10b81af7-da81-4e28-ba6b-db8d21830eb2",
       "display_name": "Jagoda Kamczacka 'Atut'",
       "species": "Jagoda Kamczacka",
       "variety": "'Atut'",
       "original_label": "Jagoda Kamczacka 'Atut'",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-neutral",
       "row_num": 61,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "b35a7dec-ba54-45ff-b80d-93550ce21a35",
+      "id": "5b7b6922-396a-4e71-96bb-a9ac7439c21c",
       "display_name": "Jagoda Kamczacka 'Dlinnopłodna'",
       "species": "Jagoda Kamczacka",
       "variety": "'Dlinnopłodna'",
       "original_label": "Jagoda Kamczacka 'Dlinnopłodna'",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-neutral",
       "row_num": 61,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "4dd66dfa-74a6-4ebb-911b-f85cf418e8f2",
+      "id": "3f3f9738-9530-439a-b9bb-a3481e845f6a",
       "display_name": "Jagoda Kamczacka 'Duet'",
       "species": "Jagoda Kamczacka",
       "variety": "'Duet'",
       "original_label": "Jagoda Kamczacka 'Duet'",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
+      "group_id": "group-shrub-neutral",
       "row_num": 61,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "e4172a76-b986-4390-9a63-b7289f0d7311",
+      "id": "1aa12d94-228d-434f-917b-5b08a1304d8e",
       "display_name": "Pigwowiec Pośredni Pink Queen",
       "species": "Pigwowiec",
       "variety": "Pośredni Pink Queen",
@@ -1665,11 +1665,11 @@
       "row_num": 61,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "1750fb0f-2069-4c7a-8c0a-f3475f2ed1c1",
+      "id": "e3d0bf68-3b1c-4e97-abbb-05702924060c",
       "display_name": "Pigwowiec od wujka",
       "species": "Pigwowiec",
       "variety": "od wujka",
@@ -1679,11 +1679,11 @@
       "row_num": 61,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "61786138-4950-4b61-80f6-2bde207743e3",
+      "id": "b310ca7a-44e1-49ea-b76c-815509cde422",
       "display_name": "Nie wiadomo, ma liście.",
       "species": "Nie",
       "variety": "wiadomo, ma liście.",
@@ -1693,11 +1693,11 @@
       "row_num": 61,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "9266d5ff-4aca-4e85-9fb7-e89d7f046c01",
+      "id": "8e3ba85e-e6dd-4ba9-ba0c-cbc89ea0a463",
       "display_name": "Borówka Amerykańska Chandler",
       "species": "Borówka",
       "variety": "Amerykańska Chandler",
@@ -1707,11 +1707,11 @@
       "row_num": 62,
       "col_num": 7,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "bdab838a-afd9-446a-9e0e-14555bd55ded",
+      "id": "2d633530-990b-45b7-aa6a-76828b1f7b26",
       "display_name": "Jagoda Goji No 1",
       "species": "Jagoda Goji",
       "variety": "No 1",
@@ -1721,11 +1721,11 @@
       "row_num": 62,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "2f75860c-08ad-4cdb-a573-bda9e479903b",
+      "id": "d26e95ef-ce38-4140-8587-cf4a54affe27",
       "display_name": "Jagoda Goji Big Berry",
       "species": "Jagoda Goji",
       "variety": "Big Berry",
@@ -1735,11 +1735,11 @@
       "row_num": 62,
       "col_num": 11,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "3c645669-8c20-46ba-86d9-36ade8247629",
+      "id": "08e9ef44-3f33-4d6b-b921-81ec1f335089",
       "display_name": "Pigwowiec Pośredni Pink Queen",
       "species": "Pigwowiec",
       "variety": "Pośredni Pink Queen",
@@ -1749,11 +1749,11 @@
       "row_num": 62,
       "col_num": 13,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "ffd99b73-701a-4188-a3ea-98d19aa44ada",
+      "id": "accb2d69-5a29-4588-bc71-3167552ef7ac",
       "display_name": "Pigwowiec Pośredni Orange Trail",
       "species": "Pigwowiec",
       "variety": "Pośredni Orange Trail",
@@ -1763,11 +1763,11 @@
       "row_num": 62,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "3d157694-2235-435d-8f9a-fe3e141f291f",
+      "id": "b1ba17e2-761c-4e46-8e5b-0c33a99fe96c",
       "display_name": "Hayward smakowita zenska",
       "species": "Kiwi",
       "variety": "Hayward zenska",
@@ -1777,11 +1777,11 @@
       "row_num": 62,
       "col_num": 17,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "f300787e-38a6-4a48-8989-b7a12c7c3c47",
+      "id": "cae1145d-b4d2-43c7-89d3-2eff77db5227",
       "display_name": "Pigwowiec pośredni Fire Dance",
       "species": "Pigwowiec",
       "variety": "pośredni Fire Dance",
@@ -1791,11 +1791,25 @@
       "row_num": 63,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "4f481e90-16ec-4fbc-8e6b-9289d9ce1543",
+      "id": "9450f346-7b56-4528-9ac7-5a3e06c4b4a4",
+      "display_name": "Rabarbar",
+      "species": "Rabarbar",
+      "variety": "",
+      "original_label": "Rabarbar",
+      "category": "unknown",
+      "group_id": "group-mixed-unknown",
+      "row_num": 64,
+      "col_num": 1,
+      "notes": "",
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
+    },
+    {
+      "id": "a91e3ba3-9546-40cf-8bd1-2451f964d059",
       "display_name": "Malina Rubus Ideaus L. 'Wilamette'",
       "species": "Malina",
       "variety": "Rubus Ideaus L. 'Wilamette'",
@@ -1805,25 +1819,11 @@
       "row_num": 64,
       "col_num": 2,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "18910835-390e-4930-b00c-31011514a9dc",
-      "display_name": "W doniczce",
-      "species": "W",
-      "variety": "doniczce",
-      "original_label": "W doniczce",
-      "category": "potted",
-      "group_id": "group-shrub-neutral",
-      "row_num": 64,
-      "col_num": 3,
-      "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
-    },
-    {
-      "id": "829b0bc7-c592-4bfd-9e97-5432db42f558",
+      "id": "20d6f6c8-4791-4bca-a27b-748f30662559",
       "display_name": "Jeżyna Bezkolcowa",
       "species": "Jeżyna",
       "variety": "Bezkolcowa",
@@ -1833,120 +1833,176 @@
       "row_num": 64,
       "col_num": 15,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "8ed86dcc-3052-45fc-86ae-2947dc44ee8c",
+      "id": "fbc6e027-5d56-452c-9796-928736dc62e6",
+      "display_name": "Rabarbar",
+      "species": "Rabarbar",
+      "variety": "",
+      "original_label": "Rabarbar",
+      "category": "unknown",
+      "group_id": "group-mixed-unknown",
+      "row_num": 65,
+      "col_num": 1,
+      "notes": "",
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
+    },
+    {
+      "id": "466356e2-e307-499e-8487-91c255886818",
+      "display_name": "Rabarbar",
+      "species": "Rabarbar",
+      "variety": "",
+      "original_label": "Rabarbar",
+      "category": "unknown",
+      "group_id": "group-mixed-unknown",
+      "row_num": 66,
+      "col_num": 1,
+      "notes": "",
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
+    },
+    {
+      "id": "3074734c-29f2-4de2-8a9f-0c1924fbd270",
       "display_name": "Poziomka Regina",
       "species": "Poziomka",
       "variety": "Regina",
       "original_label": "Poziomka Regina",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
-      "row_num": 65,
+      "group_id": "group-shrub-neutral",
+      "row_num": 66,
       "col_num": 2,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "18a1ca3e-4100-4fa2-9dbf-54c5b03de2b4",
+      "id": "6b783dd2-bbb7-4726-8fab-499e5e2266e4",
+      "display_name": "Rabarbar",
+      "species": "Rabarbar",
+      "variety": "",
+      "original_label": "Rabarbar",
+      "category": "unknown",
+      "group_id": "group-mixed-unknown",
+      "row_num": 67,
+      "col_num": 1,
+      "notes": "",
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
+    },
+    {
+      "id": "b4171132-4513-4c02-b170-23888b44b198",
+      "display_name": "Rabarbar",
+      "species": "Rabarbar",
+      "variety": "",
+      "original_label": "Rabarbar",
+      "category": "unknown",
+      "group_id": "group-mixed-unknown",
+      "row_num": 68,
+      "col_num": 1,
+      "notes": "",
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
+    },
+    {
+      "id": "2587f927-ec04-41ec-9226-3da4527b0191",
       "display_name": "Poziomka Baron Von Solemacher",
       "species": "Poziomka",
       "variety": "Baron Von Solemacher",
       "original_label": "Poziomka Baron Von Solemacher",
       "category": "unknown",
-      "group_id": "group-mixed-unknown",
-      "row_num": 66,
+      "group_id": "group-shrub-neutral",
+      "row_num": 68,
       "col_num": 2,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "f38741d7-431a-4038-a437-d284a09a437e",
+      "id": "1919a01b-83b9-46fe-b50d-cdfa1e6933c5",
       "display_name": "Morela karłowa Prunus armenica 'Wczesna z morden'",
       "species": "Morela",
       "variety": "karłowa Prunus armenica 'Wczesna z morden'",
       "original_label": "Morela karłowa Prunus armenica 'Wczesna z morden'",
       "category": "tree",
       "group_id": "group-tree-stone",
-      "row_num": 67,
+      "row_num": 69,
       "col_num": 19,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "190b58dc-60b3-497a-95c6-25ef70b4e0ff",
+      "id": "d24b3bb5-8c3a-45b3-8699-fdba34112bdc",
       "display_name": "Figowiec Figi Francesca w donicy",
       "species": "Figowiec",
       "variety": "Figi Francesca w donicy",
       "original_label": "Figowiec Figi Francesca w donicy",
       "category": "potted",
       "group_id": "group-shrub-neutral",
-      "row_num": 68,
+      "row_num": 70,
       "col_num": 8,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "07fbb925-25fd-4a80-a590-56a0035a4580",
+      "id": "c4cf13b7-220f-4e8c-a366-9e78a72c0bbe",
       "display_name": "Figowiec Figi Little Miss Figgy w donicy",
       "species": "Figowiec",
       "variety": "Figi Little Miss Figgy w donicy",
       "original_label": "Figowiec Figi Little Miss Figgy w donicy",
       "category": "potted",
       "group_id": "group-shrub-neutral",
-      "row_num": 68,
+      "row_num": 70,
       "col_num": 9,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "a86f4689-af8f-4227-aa6b-1b29ed32a1c7",
+      "id": "39368ee0-6a7f-414c-aa56-0265374da014",
       "display_name": "MINI NEKTARYNA RUBIS w donicy",
       "species": "Nektaryna",
       "variety": "MINI RUBIS w donicy",
       "original_label": "MINI NEKTARYNA RUBIS w donicy",
       "category": "potted",
       "group_id": "group-shrub-neutral",
-      "row_num": 69,
+      "row_num": 71,
       "col_num": 8,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "e2b6bb92-be25-46d6-a0d9-b228077f8acf",
+      "id": "7da8b13d-93a8-4f6f-9a7d-6a9f117cb7ec",
       "display_name": "MINI MORELA APRIGOLD w donicy",
       "species": "Morela",
       "variety": "MINI APRIGOLD w donicy",
       "original_label": "MINI MORELA APRIGOLD w donicy",
       "category": "potted",
       "group_id": "group-shrub-neutral",
-      "row_num": 70,
+      "row_num": 72,
       "col_num": 8,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     },
     {
-      "id": "900bb244-0600-45e4-8ddc-5f2a6461059b",
+      "id": "4eead7ac-7775-4dcc-ba76-8fc3f1d5324f",
       "display_name": "Morwa czarna",
       "species": "Morwa",
       "variety": "czarna",
       "original_label": "Morwa czarna",
       "category": "tree",
       "group_id": "group-tree-special",
-      "row_num": 71,
+      "row_num": 73,
       "col_num": 19,
       "notes": "",
-      "created_at": "2026-05-21T12:39:51.794Z",
-      "updated_at": "2026-05-21T12:39:51.794Z"
+      "created_at": "2026-05-21T12:59:10.701Z",
+      "updated_at": "2026-05-21T12:59:10.701Z"
     }
   ],
   "products": [

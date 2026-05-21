@@ -11,12 +11,14 @@ export function MapGrid({
   cols,
   startRow = 1,
   groupColors,
+  readOnly = false,
 }: {
   plants: Plant[];
   rows: number;
   cols: number;
   startRow?: number;
   groupColors: Record<string, string>;
+  readOnly?: boolean;
 }) {
   const occupied = new Map(plants.map((plant) => [`${plant.row_num}:${plant.col_num}`, plant]));
   const [draggedPlantId, setDraggedPlantId] = useState<string | null>(null);
@@ -49,6 +51,11 @@ export function MapGrid({
 
   function onDrop(event: DragEvent<HTMLTableCellElement>, rowNum: number, colNum: number): void {
     event.preventDefault();
+    if (readOnly) {
+      setHoveredCell(null);
+      return;
+    }
+
     const droppedPlantId = draggedPlantId || event.dataTransfer.getData("text/plain");
     if (!droppedPlantId) {
       setHoveredCell(null);
@@ -123,11 +130,12 @@ export function MapGrid({
                             <div className="space-y-1 p-1">
                               <button
                                 type="button"
-                                draggable
+                                draggable={!readOnly}
                                 onClick={() =>
                                   setExpandedPlantId((current) => (current === plant.id ? null : plant.id))
                                 }
                                 onDragStart={(event) => {
+                                  if (readOnly) return;
                                   setDraggedPlantId(plant.id);
                                   event.dataTransfer.effectAllowed = "move";
                                   event.dataTransfer.setData("text/plain", plant.id);
@@ -138,7 +146,11 @@ export function MapGrid({
                                 }}
                                 className="w-full overflow-hidden text-ellipsis whitespace-nowrap rounded border px-1 py-0.5 text-left text-xs"
                                 style={{ backgroundColor: `${color}55`, borderColor: color }}
-                                title="Kliknij aby pokazać akcje lub przeciągnij aby przenieść"
+                                title={
+                                  readOnly
+                                    ? "Kliknij aby pokazać szczegóły"
+                                    : "Kliknij aby pokazać akcje lub przeciągnij aby przenieść"
+                                }
                               >
                                 {plant.display_name}
                               </button>
@@ -151,18 +163,20 @@ export function MapGrid({
                                   >
                                     Szczegóły
                                   </Link>
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      if (!window.confirm("Czy na pewno usunąć roślinę?")) {
-                                        return;
-                                      }
-                                      submitDelete(plant.id);
-                                    }}
-                                    className="w-full rounded border border-red-300 bg-white px-1 py-0.5 text-xs text-red-700"
-                                  >
-                                    Usuń
-                                  </button>
+                                  {!readOnly ? (
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        if (!window.confirm("Czy na pewno usunąć roślinę?")) {
+                                          return;
+                                        }
+                                        submitDelete(plant.id);
+                                      }}
+                                      className="w-full rounded border border-red-300 bg-white px-1 py-0.5 text-xs text-red-700"
+                                    >
+                                      Usuń
+                                    </button>
+                                  ) : null}
                                 </>
                               ) : null}
                             </div>

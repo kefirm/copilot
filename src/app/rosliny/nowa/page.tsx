@@ -2,8 +2,21 @@ import Link from "next/link";
 import { createPlant } from "@/lib/actions";
 import { readDb } from "@/lib/db";
 import { categoryOptions } from "@/lib/plants";
+import { READ_ONLY_MESSAGE, isReadOnlyModeEnabled } from "@/lib/read-only";
 
 export default async function NowaRoslinaPage() {
+  if (isReadOnlyModeEnabled()) {
+    return (
+      <div className="space-y-4">
+        <h1 className="text-2xl font-semibold">Nowa roślina</h1>
+        <div className="rounded-lg border border-zinc-200 bg-white p-4 text-sm text-zinc-700">{READ_ONLY_MESSAGE}</div>
+        <Link href="/rosliny" className="text-sm text-zinc-600 hover:underline">
+          ← Wróć do listy roślin
+        </Link>
+      </div>
+    );
+  }
+
   const db = await readDb();
 
   return (

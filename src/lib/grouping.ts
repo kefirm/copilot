@@ -114,13 +114,32 @@ function inferPlantGroupKey(plant: Pick<Plant, "category" | "display_name" | "sp
   ];
   const specialTreeKeywords = ["morwa", "fig", "migdal", "donic", "mini drzew"];
   const blueberryKeywords = ["borowka", "borowki"];
-  const raspberryKiwiKeywords = ["malina", "maliny", "jezyna", "jezyny", "kiwi", "aktinidia"];
+  const raspberryKiwiKeywords = [
+    "malina",
+    "maliny",
+    "malinotruskawka",
+    "jezyna",
+    "jezyny",
+    "kiwi",
+    "aktinidia",
+    "sentabrskaya",
+    "kens red",
+    "adam zapylacz",
+    "ostrolistna",
+    "smakowita",
+    "zapylacz",
+  ];
   const ribesKeywords = ["porzeczka", "porzeczki", "agrest", "agresty"];
   const neutralShrubKeywords = ["aronia", "goji", "pigwowiec", "kamczack", "poziomk", "josta"];
 
-  if (plant.category === "unknown" || hasAny(normalized, unknownKeywords)) {
-    return "mixed_unknown";
-  }
+  // First pass by explicit textual hints so plants with unresolved category ("unknown")
+  // can still be grouped correctly (e.g. maliny, mini kiwi cultivars, jagoda kamczacka).
+  if (hasAny(normalized, blueberryKeywords)) return "shrub_blueberry";
+  if (hasAny(normalized, raspberryKiwiKeywords)) return "shrub_raspberry_kiwi";
+  if (hasAny(normalized, ribesKeywords)) return "shrub_ribes";
+  if (hasAny(normalized, neutralShrubKeywords)) return "shrub_neutral";
+
+  if (plant.category === "unknown" || hasAny(normalized, unknownKeywords)) return "mixed_unknown";
 
   if (plant.category === "tree") {
     if (hasAny(normalized, pomeKeywords)) return "tree_pome";
@@ -130,10 +149,6 @@ function inferPlantGroupKey(plant: Pick<Plant, "category" | "display_name" | "sp
   }
 
   if (plant.category === "shrub" || plant.category === "vine" || plant.category === "potted") {
-    if (hasAny(normalized, blueberryKeywords)) return "shrub_blueberry";
-    if (hasAny(normalized, raspberryKiwiKeywords)) return "shrub_raspberry_kiwi";
-    if (hasAny(normalized, ribesKeywords)) return "shrub_ribes";
-    if (hasAny(normalized, neutralShrubKeywords)) return "shrub_neutral";
     return "shrub_neutral";
   }
 
@@ -148,4 +163,3 @@ export function inferGroupIdForPlant(
   const key = inferPlantGroupKey(plant);
   return targets[key];
 }
-
