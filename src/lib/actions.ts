@@ -15,7 +15,7 @@ function refreshAll(): void {
   revalidatePath("/obserwacje");
 }
 
-function revalidatePlantPaths(plantId: string): void {
+function revalidatePlantDetailPaths(plantId: string): void {
   revalidatePath(`/rosliny/${plantId}`);
   revalidatePath(`/rosliny/${plantId}/edytuj`);
 }
@@ -225,7 +225,7 @@ export async function movePlantOnMap(input: {
 
   await writeDb(db);
   refreshAll();
-  revalidatePlantPaths(plant.id);
+  revalidatePlantDetailPaths(plant.id);
 
   return {
     ok: true,

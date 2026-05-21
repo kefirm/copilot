@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
 import { movePlantOnMap } from "@/lib/actions";
 import type { Plant } from "@/lib/types";
 
@@ -16,8 +15,10 @@ interface GardenMapProps {
   rows: number;
 }
 
+const CELL_WIDTH_PX = 64;
+const ROW_HEADER_WIDTH_PX = 120;
+
 export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
-  const router = useRouter();
   const [plants, setPlants] = useState(initialPlants);
   const [activePlantId, setActivePlantId] = useState<string | null>(null);
   const [notice, setNotice] = useState<Notice>({
@@ -26,7 +27,7 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
       "Przeciągnij nazwę rośliny albo wybierz ją kliknięciem i wskaż puste pole. Zielone pola są dozwolonym celem, czerwone są zajęte.",
   });
   const [isPending, startTransition] = useTransition();
-  const mapMinWidth = `${cols * 64 + 120}px`;
+  const mapMinWidth = `${cols * CELL_WIDTH_PX + ROW_HEADER_WIDTH_PX}px`;
 
   const occupied = useMemo(
     () => new Map(plants.map((plant) => [`${plant.row_num}:${plant.col_num}`, plant])),
@@ -66,7 +67,6 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
         ),
       );
       setMoveNotice("success", result.message);
-      router.refresh();
     });
   }
 
