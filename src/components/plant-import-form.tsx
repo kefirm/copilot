@@ -132,6 +132,17 @@ export function PlantImportForm() {
   );
 }
 
+export function PlantImportFormReadOnly() {
+  return (
+    <section className="space-y-3 rounded-lg border border-zinc-200 bg-white p-4">
+      <div className="space-y-1">
+        <h2 className="text-lg font-semibold">Import z arkusza CSV</h2>
+        <p className="text-sm text-zinc-600">Tryb podglądu — import jest wyłączony.</p>
+      </div>
+    </section>
+  );
+}
+
 function SummaryItem({ label, value }: { label: string; value: string }) {
   return (
     <div>

@@ -29,19 +29,44 @@ npm run lint
 npm run build
 ```
 
+## Tryb podglądu (read-only)
+
+Aplikacja obsługuje zmienną środowiskową:
+
+- `NEXT_PUBLIC_READ_ONLY_MODE=true`
+
+Gdy jest ustawiona na `true`, aplikacja działa wyłącznie w trybie podglądu:
+
+- brak dodawania, edycji i usuwania danych,
+- brak importu CSV/Google Sheets z UI,
+- brak drag & drop i usuwania roślin z mapy,
+- akcje modyfikujące są ukryte w interfejsie,
+- dodatkowo server actions blokują zapis po stronie serwera.
+
+W UI wyświetlany jest komunikat:
+
+- `Tryb podglądu — edycja jest wyłączona`
+
+Gdy zmienna jest nieustawiona albo ma wartość inną niż `true`, tryb edycji działa normalnie.
+
+## Wdrożenie na Vercel
+
+1. Wejdź na Vercel i wybierz **Add New Project**.
+2. Zaimportuj repozytorium `kefirm/copilot` z GitHub.
+3. W ustawieniach projektu dodaj zmienną środowiskową:
+   - `NEXT_PUBLIC_READ_ONLY_MODE=true`
+4. Uruchom deploy.
+
 ## Najważniejsze funkcje MVP
 
 - Dashboard (`/`)
-- Mapa ogrodu 24x120 (`/mapa`) z nazwą rośliny tylko w zajętych komórkach i ręcznym przeciąganiem na puste pola
-- CRUD roślin (`/rosliny`)
-- Import CSV siatki ogrodu w sekcji roślin z podsumowaniem importu
-- CRUD grup (`/grupy`)
-- CRUD produktów (`/produkty`)
-- CRUD zabiegów (`/zabiegi`) z celem: roślina lub grupa
-- Zabiegi typu: `spray` (oprysk) i `fertilization` (nawożenie)
-- W zabiegach produkt można wybrać z listy lub wpisać ręcznie
-- CRUD obserwacji powiązanych z roślinami (`/obserwacje`)
-- Twarde usuwanie rekordów (z potwierdzeniem w UI)
+- Mapa ogrodu 20x200 (`/mapa`)
+- Lista roślin z filtrowaniem i sortowaniem (`/rosliny`)
+- Import CSV / Google Sheets (`/rosliny`) i auto-przypisanie grup
+- Zarządzanie grupami (`/grupy`)
+- Zarządzanie produktami (`/produkty`)
+- Zarządzanie zabiegami (`/zabiegi`) z filtrowaniem/sortowaniem
+- Zarządzanie obserwacjami (`/obserwacje`)
 
 ## Model danych
 
@@ -52,56 +77,3 @@ Dane przechowywane są lokalnie w `data/db.json`:
 - `products(name, product_type, default_dose, default_unit, notes, timestamps)`
 - `treatments(target_type plant/group, plant_id, group_id, treatment_type, date, product_id, product_name_manual, dose, unit, reason, notes, timestamps)`
 - `observations(plant_id, date, observation_type, title, description, timestamps)`
-
-## Przesuwanie roślin na mapie
-
-- Wejdź na `/mapa`.
-- Przeciągnij nazwę rośliny na puste pole.
-- Zajęte pole blokuje ruch i pokaże komunikat po polsku.
-- Jeśli nie korzystasz z myszy, pozycję nadal możesz zmienić w formularzu edycji rośliny.
-
-## Nazewnictwo grup
-
-- Dla uproszczonych grup krzewów używaj etykiety `Krzewy`.
-
-## Import arkusza CSV z roślinami
-
-Importer jest dostępny w widoku **Rośliny** (`/rosliny`).
-
-### Jak zaimportować Twój plik `Drzewa i krzewy - Arkusz1.csv`
-
-1. Uruchom aplikację:
-
-   ```bash
-   npm install
-   npm run dev
-   ```
-
-2. Otwórz `http://localhost:3000/rosliny`.
-3. W sekcji **Import z arkusza CSV** kliknij **Importuj wybrany plik CSV** i wybierz swój wyeksportowany plik `Drzewa i krzewy - Arkusz1.csv`.
-4. Po imporcie zobaczysz podsumowanie:
-   - liczba przeskanowanych wierszy i komórek,
-   - liczba nowych roślin,
-   - liczba zaktualizowanych pozycji,
-   - liczba pominiętych pustych komórek,
-   - ostrzeżenia i błędy.
-
-### Jak działa mapowanie arkusza
-
-- plik jest interpretowany jako **siatka ogrodu**,
-- numer wiersza w CSV = `row_num`,
-- numer kolumny w CSV = `col_num`,
-- każda niepusta komórka tworzy lub aktualizuje roślinę na mapie,
-- całkowicie puste komórki i wiersze są pomijane,
-- przy ponownym imporcie zajęte współrzędne są aktualizowane i raportowane w podsumowaniu.
-
-Importer zachowuje oryginalny tekst komórki w polu `original_label`, tworzy przyjazny `display_name` oraz próbuje odgadnąć kategorię (`tree`, `shrub`, `vine`, `potted`, `unknown`) na podstawie nazwy.
-
-### Przykład z repo
-
-Do szybkiego sprawdzenia działania możesz:
-
-- kliknąć przycisk **Załaduj przykład z repo** w `/rosliny`, albo
-- pobrać plik `public/examples/przykladowy-arkusz-ogrodu.csv`.
-
-Nie musisz ręcznie edytować żadnych plików projektu ani `data/db.json` — import zapisuje dane lokalnie sam.

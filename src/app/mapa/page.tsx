@@ -2,12 +2,14 @@ import { readDb } from "@/lib/db";
 import { MapGrid } from "@/components/map-grid";
 import { syncPlantsFromGoogleSheetIfDue } from "@/lib/auto-sheet-sync";
 import { buildGroupColors } from "@/lib/group-colors";
+import { isReadOnlyModeEnabled } from "@/lib/read-only";
 
 const ROWS = 120;
 const COLS = 24;
 const START_VISIBLE_ROW = 36;
 
 export default async function MapaPage() {
+  const readOnly = isReadOnlyModeEnabled();
   await syncPlantsFromGoogleSheetIfDue();
   const db = await readDb();
   const groupColors = buildGroupColors(db.groups);
@@ -16,8 +18,9 @@ export default async function MapaPage() {
     <div className="space-y-4">
       <h1 className="text-2xl font-semibold">Mapa ogrodu ({ROWS} × {COLS})</h1>
       <p className="text-sm text-zinc-600">
-        Przeciągnij roślinę do nowej komórki. Kliknij nazwę rośliny, aby pokazać akcje. Wiersze 1-35
-        są ukryte.
+        {readOnly
+          ? "Tryb podglądu: przeciąganie i usuwanie są wyłączone. Kliknij nazwę rośliny, aby pokazać szczegóły."
+          : "Przeciągnij roślinę do nowej komórki. Kliknij nazwę rośliny, aby pokazać akcje. Wiersze 1-35 są ukryte."}
       </p>
       <div className="flex flex-wrap gap-2 rounded-lg border border-zinc-200 bg-white p-3 text-xs">
         {db.groups.map((group) => (
@@ -30,7 +33,14 @@ export default async function MapaPage() {
           </span>
         ))}
       </div>
-      <MapGrid plants={db.plants} rows={ROWS} cols={COLS} startRow={START_VISIBLE_ROW} groupColors={groupColors} />
+      <MapGrid
+        plants={db.plants}
+        rows={ROWS}
+        cols={COLS}
+        startRow={START_VISIBLE_ROW}
+        groupColors={groupColors}
+        readOnly={readOnly}
+      />
     </div>
   );
 }

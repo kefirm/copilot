@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { PlantImportForm } from "@/components/plant-import-form";
+import { PlantImportForm, PlantImportFormReadOnly } from "@/components/plant-import-form";
 import { autoAssignPlantGroups, deletePlant } from "@/lib/actions";
 import { syncPlantsFromGoogleSheetIfDue } from "@/lib/auto-sheet-sync";
 import { readDb } from "@/lib/db";
 import { categoryLabel } from "@/lib/plants";
+import { isReadOnlyModeEnabled } from "@/lib/read-only";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
 import type { Plant } from "@/lib/types";
 
@@ -47,6 +48,7 @@ export default async function RoslinyPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+  const readOnly = isReadOnlyModeEnabled();
   await syncPlantsFromGoogleSheetIfDue();
   const params = await searchParams;
   const db = await readDb();
@@ -94,19 +96,21 @@ export default async function RoslinyPage({
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Rośliny</h1>
-        <div className="flex gap-2">
-          <form action={autoAssignPlantGroups}>
-            <button type="submit" className="rounded-md border px-4 py-2 text-sm">
-              Auto-przypisz grupy
-            </button>
-          </form>
-          <Link href="/rosliny/nowa" className="rounded-md bg-zinc-900 px-4 py-2 text-sm text-white">
-            Dodaj roślinę
-          </Link>
-        </div>
+        {!readOnly ? (
+          <div className="flex gap-2">
+            <form action={autoAssignPlantGroups}>
+              <button type="submit" className="rounded-md border px-4 py-2 text-sm">
+                Auto-przypisz grupy
+              </button>
+            </form>
+            <Link href="/rosliny/nowa" className="rounded-md bg-zinc-900 px-4 py-2 text-sm text-white">
+              Dodaj roślinę
+            </Link>
+          </div>
+        ) : null}
       </div>
 
-      <PlantImportForm />
+      {readOnly ? <PlantImportFormReadOnly /> : <PlantImportForm />}
 
       <form method="get" className="grid gap-3 rounded-lg border border-zinc-200 bg-white p-4 md:grid-cols-4">
         <input type="hidden" name="sort" value={sortBy} />
@@ -246,17 +250,21 @@ export default async function RoslinyPage({
                       <Link href={`/rosliny/${plant.id}`} className="rounded border px-2 py-1 text-xs">
                         Szczegóły
                       </Link>
-                      <Link href={`/rosliny/${plant.id}/edytuj`} className="rounded border px-2 py-1 text-xs">
-                        Edytuj
-                      </Link>
-                      <form action={deletePlant}>
-                        <input type="hidden" name="id" value={plant.id} />
-                        <ConfirmSubmitButton
-                          label="Usuń"
-                          message="Czy na pewno usunąć roślinę?"
-                          className="rounded border border-red-300 px-2 py-1 text-xs text-red-700"
-                        />
-                      </form>
+                      {!readOnly ? (
+                        <Link href={`/rosliny/${plant.id}/edytuj`} className="rounded border px-2 py-1 text-xs">
+                          Edytuj
+                        </Link>
+                      ) : null}
+                      {!readOnly ? (
+                        <form action={deletePlant}>
+                          <input type="hidden" name="id" value={plant.id} />
+                          <ConfirmSubmitButton
+                            label="Usuń"
+                            message="Czy na pewno usunąć roślinę?"
+                            className="rounded border border-red-300 px-2 py-1 text-xs text-red-700"
+                          />
+                        </form>
+                      ) : null}
                     </div>
                   </td>
                 </tr>

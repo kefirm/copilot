@@ -3,6 +3,7 @@ import path from "node:path";
 import { nowIso, readDb, writeDb } from "@/lib/db";
 import { inferGroupIdForPlant } from "@/lib/grouping";
 import { importPlantsFromGrid } from "@/lib/plant-import";
+import { isReadOnlyModeEnabled } from "@/lib/read-only";
 
 const AUTO_SYNC_SHEET_URL =
   "https://docs.google.com/spreadsheets/d/1fy1cGe-pLj0GIA7J_FqfWoRw69VSQINLPwllOBrL6oY/edit?gid=0#gid=0";
@@ -122,6 +123,10 @@ async function fetchGoogleSheetCsv(sheetUrl: string): Promise<string> {
 }
 
 export async function syncPlantsFromGoogleSheetIfDue(): Promise<void> {
+  if (isReadOnlyModeEnabled()) {
+    return;
+  }
+
   const meta = await readAutoSyncMeta();
   const now = Date.now();
   const lastAttemptMs = meta.last_attempt_at ? new Date(meta.last_attempt_at).getTime() : 0;
@@ -167,4 +172,3 @@ export async function syncPlantsFromGoogleSheetIfDue(): Promise<void> {
     });
   }
 }
-

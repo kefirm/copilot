@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { id, nowIso, readDb, writeDb } from "@/lib/db";
 import { inferGroupIdForPlant } from "@/lib/grouping";
 import { importPlantsFromGrid, type PlantsImportSummary } from "@/lib/plant-import";
+import { isReadOnlyModeEnabled, READ_ONLY_MESSAGE } from "@/lib/read-only";
 import { normalizeGroupName, parseIntSafe, text } from "@/lib/utils";
 
 function refreshAll(): void {
@@ -17,6 +18,12 @@ function refreshAll(): void {
   revalidatePath("/produkty");
   revalidatePath("/zabiegi");
   revalidatePath("/obserwacje");
+}
+
+function assertWritable(): void {
+  if (isReadOnlyModeEnabled()) {
+    throw new Error(READ_ONLY_MESSAGE);
+  }
 }
 
 function assertPlantPositionAvailable(
@@ -120,6 +127,7 @@ type ImportPlantsActionState = {
 };
 
 export async function createGroup(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const timestamp = nowIso();
   db.groups.push({
@@ -135,6 +143,7 @@ export async function createGroup(formData: FormData): Promise<void> {
 }
 
 export async function updateGroup(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const groupId = text(formData.get("id"));
   const group = db.groups.find((g) => g.id === groupId);
@@ -153,6 +162,7 @@ export async function updateGroup(formData: FormData): Promise<void> {
 }
 
 export async function deleteGroup(formData: FormData): Promise<void> {
+  assertWritable();
   const groupId = text(formData.get("id"));
   const db = await readDb();
   db.groups = db.groups.filter((g) => g.id !== groupId);
@@ -170,6 +180,7 @@ export async function deleteGroup(formData: FormData): Promise<void> {
 }
 
 export async function createPlant(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const rowNum = parseIntSafe(formData.get("row_num"));
   const colNum = parseIntSafe(formData.get("col_num"));
@@ -218,6 +229,7 @@ export async function createPlant(formData: FormData): Promise<void> {
 }
 
 export async function updatePlant(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const plantId = text(formData.get("id"));
   const plant = db.plants.find((p) => p.id === plantId);
@@ -267,6 +279,7 @@ export async function updatePlant(formData: FormData): Promise<void> {
 }
 
 export async function deletePlant(formData: FormData): Promise<void> {
+  assertWritable();
   const plantId = text(formData.get("id"));
   const db = await readDb();
   db.plants = db.plants.filter((p) => p.id !== plantId);
@@ -278,6 +291,7 @@ export async function deletePlant(formData: FormData): Promise<void> {
 }
 
 export async function movePlantOnMap(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const plantId = text(formData.get("plant_id"));
   const rowNum = parseIntSafe(formData.get("row_num"));
@@ -302,6 +316,7 @@ export async function movePlantOnMap(formData: FormData): Promise<void> {
 }
 
 export async function deletePlantOnMap(formData: FormData): Promise<void> {
+  assertWritable();
   const plantId = text(formData.get("id"));
   const db = await readDb();
   db.plants = db.plants.filter((p) => p.id !== plantId);
@@ -321,6 +336,7 @@ export async function importPlantsFromGridCsv(
   formData: FormData,
 ): Promise<ImportPlantsActionState> {
   try {
+    assertWritable();
     const rawImportSource = text(formData.get("import_source"));
     const importSource =
       rawImportSource === "sample"
@@ -461,6 +477,7 @@ export async function importPlantsFromGridCsv(
 }
 
 export async function autoAssignPlantGroups(): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const timestamp = nowIso();
 
@@ -485,6 +502,7 @@ export async function autoAssignPlantGroups(): Promise<void> {
 }
 
 export async function createProduct(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const timestamp = nowIso();
 
@@ -505,6 +523,7 @@ export async function createProduct(formData: FormData): Promise<void> {
 }
 
 export async function updateProduct(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const productId = text(formData.get("id"));
   const product = db.products.find((p) => p.id === productId);
@@ -526,6 +545,7 @@ export async function updateProduct(formData: FormData): Promise<void> {
 }
 
 export async function deleteProduct(formData: FormData): Promise<void> {
+  assertWritable();
   const productId = text(formData.get("id"));
   const db = await readDb();
   db.products = db.products.filter((p) => p.id !== productId);
@@ -538,6 +558,7 @@ export async function deleteProduct(formData: FormData): Promise<void> {
 }
 
 export async function createTreatment(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const timestamp = nowIso();
   const targetType = parseTargetType(text(formData.get("target_type")));
@@ -569,6 +590,7 @@ export async function createTreatment(formData: FormData): Promise<void> {
 }
 
 export async function updateTreatment(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const treatmentId = text(formData.get("id"));
   const treatment = db.treatments.find((t) => t.id === treatmentId);
@@ -602,6 +624,7 @@ export async function updateTreatment(formData: FormData): Promise<void> {
 }
 
 export async function deleteTreatment(formData: FormData): Promise<void> {
+  assertWritable();
   const treatmentId = text(formData.get("id"));
   const db = await readDb();
   db.treatments = db.treatments.filter((t) => t.id !== treatmentId);
@@ -611,6 +634,7 @@ export async function deleteTreatment(formData: FormData): Promise<void> {
 }
 
 export async function deleteCompletedTreatments(): Promise<void> {
+  assertWritable();
   const db = await readDb();
   db.treatments = db.treatments.filter((treatment) => !treatment.completed_at);
   await writeDb(db);
@@ -619,6 +643,7 @@ export async function deleteCompletedTreatments(): Promise<void> {
 }
 
 export async function toggleTreatmentCompleted(formData: FormData): Promise<void> {
+  assertWritable();
   const treatmentId = text(formData.get("id"));
   const db = await readDb();
   const treatment = db.treatments.find((t) => t.id === treatmentId);
@@ -634,6 +659,7 @@ export async function toggleTreatmentCompleted(formData: FormData): Promise<void
 }
 
 export async function createObservation(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const timestamp = nowIso();
 
@@ -654,6 +680,7 @@ export async function createObservation(formData: FormData): Promise<void> {
 }
 
 export async function updateObservation(formData: FormData): Promise<void> {
+  assertWritable();
   const db = await readDb();
   const observationId = text(formData.get("id"));
   const observation = db.observations.find((o) => o.id === observationId);
@@ -675,6 +702,7 @@ export async function updateObservation(formData: FormData): Promise<void> {
 }
 
 export async function deleteObservation(formData: FormData): Promise<void> {
+  assertWritable();
   const observationId = text(formData.get("id"));
   const db = await readDb();
   db.observations = db.observations.filter((o) => o.id !== observationId);

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { deleteGroup, updateGroup } from "@/lib/actions";
 import { readDb } from "@/lib/db";
+import { READ_ONLY_MESSAGE, isReadOnlyModeEnabled } from "@/lib/read-only";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
 
 export default async function GrupaDetailsPage({
@@ -9,6 +10,7 @@ export default async function GrupaDetailsPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  const readOnly = isReadOnlyModeEnabled();
   const { id } = await params;
   const db = await readDb();
   const group = db.groups.find((item) => item.id === id);
@@ -21,30 +23,44 @@ export default async function GrupaDetailsPage({
       <h1 className="text-2xl font-semibold">Grupa: {group.name}</h1>
 
       <div className="grid gap-3 rounded-lg border border-zinc-200 bg-white p-4">
-        <form action={updateGroup} className="grid gap-3">
-          <input type="hidden" name="id" value={group.id} />
-          <label className="flex flex-col gap-1">
-            Nazwa
-            <input name="name" defaultValue={group.name} required />
-          </label>
-          <label className="flex flex-col gap-1">
-            Opis
-            <textarea name="description" rows={3} defaultValue={group.description} />
-          </label>
-          <div className="flex flex-wrap gap-2">
-            <button type="submit" className="rounded-md bg-zinc-900 px-4 py-2 text-sm text-white">
-              Zapisz zmiany
-            </button>
+        {readOnly ? (
+          <div className="space-y-2 text-sm text-zinc-700">
+            <p>{READ_ONLY_MESSAGE}</p>
+            <p>
+              <strong>Nazwa:</strong> {group.name}
+            </p>
+            <p>
+              <strong>Opis:</strong> {group.description || "-"}
+            </p>
           </div>
-        </form>
-        <form action={deleteGroup}>
-          <input type="hidden" name="id" value={group.id} />
-          <ConfirmSubmitButton
-            label="Usuń grupę"
-            message="Czy na pewno usunąć grupę?"
-            className="rounded-md border border-red-300 px-4 py-2 text-sm text-red-700"
-          />
-        </form>
+        ) : (
+          <>
+            <form action={updateGroup} className="grid gap-3">
+              <input type="hidden" name="id" value={group.id} />
+              <label className="flex flex-col gap-1">
+                Nazwa
+                <input name="name" defaultValue={group.name} required />
+              </label>
+              <label className="flex flex-col gap-1">
+                Opis
+                <textarea name="description" rows={3} defaultValue={group.description} />
+              </label>
+              <div className="flex flex-wrap gap-2">
+                <button type="submit" className="rounded-md bg-zinc-900 px-4 py-2 text-sm text-white">
+                  Zapisz zmiany
+                </button>
+              </div>
+            </form>
+            <form action={deleteGroup}>
+              <input type="hidden" name="id" value={group.id} />
+              <ConfirmSubmitButton
+                label="Usuń grupę"
+                message="Czy na pewno usunąć grupę?"
+                className="rounded-md border border-red-300 px-4 py-2 text-sm text-red-700"
+              />
+            </form>
+          </>
+        )}
       </div>
 
       <div className="rounded-lg border border-zinc-200 bg-white p-4">

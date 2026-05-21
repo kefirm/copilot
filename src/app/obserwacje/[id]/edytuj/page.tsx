@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { updateObservation } from "@/lib/actions";
 import { readDb } from "@/lib/db";
+import { READ_ONLY_MESSAGE, isReadOnlyModeEnabled } from "@/lib/read-only";
 
 export default async function EdytujObserwacjePage({
   params,
@@ -12,6 +13,17 @@ export default async function EdytujObserwacjePage({
   const db = await readDb();
   const observation = db.observations.find((item) => item.id === id);
   if (!observation) return notFound();
+  if (isReadOnlyModeEnabled()) {
+    return (
+      <div className="space-y-4">
+        <h1 className="text-2xl font-semibold">Edycja obserwacji</h1>
+        <div className="rounded-lg border border-zinc-200 bg-white p-4 text-sm text-zinc-700">{READ_ONLY_MESSAGE}</div>
+        <Link href="/obserwacje" className="text-sm text-zinc-600 hover:underline">
+          ← Wróć do listy obserwacji
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-4">
