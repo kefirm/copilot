@@ -66,7 +66,7 @@ export default async function EdytujRoslinePage({
           Notatki
           <textarea name="notes" rows={3} defaultValue={plant.notes} />
         </label>
-        <div className="md:col-span-2 flex gap-2">
+        <div className="flex gap-2 md:col-span-2">
           <button type="submit" className="rounded-md bg-zinc-900 px-4 py-2 text-sm text-white">
             Zapisz
           </button>
