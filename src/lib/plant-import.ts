@@ -258,6 +258,8 @@ export function deriveSpeciesAndVariety(
   }
 
   const parts = normalizeWhitespace(label).split(" ").filter(Boolean);
+  // Kiwi imports often contain cultivar-only labels, so keep the full label as `species`
+  // instead of splitting the first token away during the generic fallback path for vines.
   if (category !== "vine" && parts.length > 1) {
     return {
       species: parts[0],

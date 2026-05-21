@@ -43,7 +43,8 @@ const SAMPLE_GARDEN_CSV_PATH = path.join(
   "examples",
   "przykladowy-arkusz-ogrodu.csv",
 );
-// Imports are handled fully in-memory via server action, so keep uploads small and predictable.
+// Imports are handled fully in-memory via server action. For the fixed 24 × 120 grid, 2 MB is
+// comfortably enough for sparse CSV exports while still preventing unexpectedly large uploads.
 const MAX_IMPORT_UPLOAD_SIZE_BYTES = 2 * 1024 * 1024;
 
 function parseCategory(value: string): "tree" | "shrub" | "vine" | "potted" | "unknown" {
