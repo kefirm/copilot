@@ -69,7 +69,10 @@ export async function updateGroup(formData: FormData): Promise<void> {
   const db = await readDb();
   const groupId = text(formData.get("id"));
   const group = db.groups.find((g) => g.id === groupId);
-  if (!group) redirect("/grupy");
+  if (!group) {
+    redirect("/grupy");
+    return;
+  }
 
   group.name = text(formData.get("name"));
   group.description = text(formData.get("description"));
@@ -134,7 +137,10 @@ export async function updatePlant(formData: FormData): Promise<void> {
   const db = await readDb();
   const plantId = text(formData.get("id"));
   const plant = db.plants.find((p) => p.id === plantId);
-  if (!plant) redirect("/rosliny");
+  if (!plant) {
+    redirect("/rosliny");
+    return;
+  }
 
   const rowNum = parseIntSafe(formData.get("row_num"));
   const colNum = parseIntSafe(formData.get("col_num"));
@@ -197,7 +203,10 @@ export async function updateProduct(formData: FormData): Promise<void> {
   const db = await readDb();
   const productId = text(formData.get("id"));
   const product = db.products.find((p) => p.id === productId);
-  if (!product) redirect("/produkty");
+  if (!product) {
+    redirect("/produkty");
+    return;
+  }
 
   product.name = text(formData.get("name"));
   product.product_type = text(formData.get("product_type"));
@@ -257,7 +266,10 @@ export async function updateTreatment(formData: FormData): Promise<void> {
   const db = await readDb();
   const treatmentId = text(formData.get("id"));
   const treatment = db.treatments.find((t) => t.id === treatmentId);
-  if (!treatment) redirect("/zabiegi");
+  if (!treatment) {
+    redirect("/zabiegi");
+    return;
+  }
 
   const targetType = parseTargetType(text(formData.get("target_type")));
   const plantId = text(formData.get("plant_id"));
@@ -315,7 +327,10 @@ export async function updateObservation(formData: FormData): Promise<void> {
   const db = await readDb();
   const observationId = text(formData.get("id"));
   const observation = db.observations.find((o) => o.id === observationId);
-  if (!observation) redirect("/obserwacje");
+  if (!observation) {
+    redirect("/obserwacje");
+    return;
+  }
 
   observation.plant_id = text(formData.get("plant_id"));
   observation.date = text(formData.get("date"));
