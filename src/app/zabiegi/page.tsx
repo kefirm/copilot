@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   deleteTreatment,
   findGroupName,
@@ -12,13 +12,10 @@ import {
 } from "@/lib/garden";
 
 export default function ZabiegiPage() {
-  const [db, setDb] = useState(loadDb());
+  const [, forceRender] = useState(0);
+  const db = loadDb();
 
-  const refresh = () => setDb(loadDb());
-
-  useEffect(() => {
-    refresh();
-  }, []);
+  const refresh = () => forceRender((v) => v + 1);
 
   const treatments = [...db.treatments].sort((a, b) => b.date.localeCompare(a.date));
 

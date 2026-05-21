@@ -1,17 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { categoryLabels, deletePlant, findGroupName, loadDb } from "@/lib/garden";
 
 export default function RoslinyPage() {
-  const [db, setDb] = useState(loadDb());
+  const [, forceRender] = useState(0);
+  const db = loadDb();
 
-  const refresh = () => setDb(loadDb());
-
-  useEffect(() => {
-    refresh();
-  }, []);
+  const refresh = () => forceRender((v) => v + 1);
 
   return (
     <div className="space-y-4">

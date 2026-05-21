@@ -91,7 +91,7 @@ export function TreatmentForm({
           <select
             className="mt-1 w-full rounded border border-zinc-300 px-3 py-2"
             value={form.treatmentType}
-            onChange={(e) => setForm((prev) => ({ ...prev, treatmentType: e.target.value }))}
+            onChange={(e) => setForm((prev) => ({ ...prev, treatmentType: e.target.value as TreatmentType }))}
           >
             {treatmentTypes.map((type) => (
               <option key={type} value={type}>
@@ -117,7 +117,7 @@ export function TreatmentForm({
         <select
           className="mt-1 w-full rounded border border-zinc-300 px-3 py-2"
           value={form.targetType}
-          onChange={(e) => setForm((prev) => ({ ...prev, targetType: e.target.value }))}
+          onChange={(e) => setForm((prev) => ({ ...prev, targetType: e.target.value as "plant" | "group" }))}
         >
           <option value="plant">Pojedyncza roślina</option>
           <option value="group">Grupa roślin</option>

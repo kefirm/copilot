@@ -1,20 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { deleteGroup, loadDb, saveGroup } from "@/lib/garden";
 
 export default function GrupyPage() {
-  const [db, setDb] = useState(loadDb());
+  const [, forceRender] = useState(0);
+  const db = loadDb();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState("");
 
-  const refresh = () => setDb(loadDb());
-
-  useEffect(() => {
-    refresh();
-  }, []);
+  const refresh = () => forceRender((v) => v + 1);
 
   return (
     <div className="space-y-4">

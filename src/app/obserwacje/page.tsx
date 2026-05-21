@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   ObservationType,
   deleteObservation,
@@ -14,25 +14,21 @@ import {
 const observationTypes: ObservationType[] = ["disease", "pest", "general"];
 
 export default function ObserwacjePage() {
-  const [db, setDb] = useState(loadDb());
+  const [, forceRender] = useState(0);
+  const db = loadDb();
   const [error, setError] = useState("");
-  const [form, setForm] = useState({
-    plantId: "",
-    date: new Date().toISOString().slice(0, 10),
-    observationType: "general",
-    title: "",
-    description: "",
+  const [form, setForm] = useState(() => {
+    const firstPlantId = loadDb().plants[0]?.id ?? "";
+    return {
+      plantId: firstPlantId,
+      date: new Date().toISOString().slice(0, 10),
+      observationType: "general",
+      title: "",
+      description: "",
+    };
   });
 
-  const refresh = () => setDb(loadDb());
-
-  useEffect(() => {
-    const data = loadDb();
-    setDb(data);
-    if (!form.plantId && data.plants[0]) {
-      setForm((prev) => ({ ...prev, plantId: data.plants[0].id }));
-    }
-  }, []);
+  const refresh = () => forceRender((v) => v + 1);
 
   return (
     <div className="space-y-4">

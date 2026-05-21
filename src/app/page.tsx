@@ -1,16 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { loadDb, treatmentLabels, observationTypeLabels, findPlantName } from "@/lib/garden";
 import { PageCard } from "@/components/page-card";
 
 export default function DashboardPage() {
-  const [db, setDb] = useState(loadDb());
-
-  useEffect(() => {
-    setDb(loadDb());
-  }, []);
+  const db = loadDb();
 
   const latestTreatments = [...db.treatments]
     .sort((a, b) => b.date.localeCompare(a.date))

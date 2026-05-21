@@ -2,16 +2,11 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { findProductName, loadDb, treatmentLabels } from "@/lib/garden";
 
 export default function GroupDetailsPage() {
   const { id } = useParams<{ id: string }>();
-  const [db, setDb] = useState(loadDb());
-
-  useEffect(() => {
-    setDb(loadDb());
-  }, []);
+  const db = loadDb();
 
   const group = db.groups.find((item) => item.id === id);
 

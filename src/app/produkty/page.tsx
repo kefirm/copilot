@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Product,
   ProductType,
@@ -29,16 +29,13 @@ const emptyForm: ProductFormState = {
 };
 
 export default function ProduktyPage() {
-  const [db, setDb] = useState(loadDb());
+  const [, forceRender] = useState(0);
+  const db = loadDb();
   const [error, setError] = useState("");
   const [editing, setEditing] = useState<Product | null>(null);
   const [form, setForm] = useState<ProductFormState>(emptyForm);
 
-  const refresh = () => setDb(loadDb());
-
-  useEffect(() => {
-    refresh();
-  }, []);
+  const refresh = () => forceRender((v) => v + 1);
 
   const title = useMemo(() => (editing ? "Edytuj produkt" : "Dodaj produkt"), [editing]);
 

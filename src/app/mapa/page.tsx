@@ -1,15 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useMemo } from "react";
 import { GRID_COLS, GRID_ROWS, loadDb } from "@/lib/garden";
 
 export default function MapaPage() {
-  const [db, setDb] = useState(loadDb());
-
-  useEffect(() => {
-    setDb(loadDb());
-  }, []);
+  const db = loadDb();
 
   const plantByCell = useMemo(() => {
     const map = new Map<string, { id: string; displayName: string }>();

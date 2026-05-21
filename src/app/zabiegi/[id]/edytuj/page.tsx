@@ -1,20 +1,13 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { TreatmentForm } from "@/components/treatment-form";
-import { GardenDb, Treatment, loadDb } from "@/lib/garden";
+import { loadDb } from "@/lib/garden";
 
 export default function EdytujZabiegPage() {
   const { id } = useParams<{ id: string }>();
-  const [db, setDb] = useState<GardenDb>(loadDb());
-  const [treatment, setTreatment] = useState<Treatment | null>(null);
-
-  useEffect(() => {
-    const loaded = loadDb();
-    setDb(loaded);
-    setTreatment(loaded.treatments.find((item) => item.id === id) ?? null);
-  }, [id]);
+  const db = loadDb();
+  const treatment = db.treatments.find((item) => item.id === id);
 
   if (!treatment) {
     return <p>Nie znaleziono zabiegu.</p>;

@@ -1,17 +1,14 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { TreatmentForm } from "@/components/treatment-form";
-import { GardenDb, loadDb } from "@/lib/garden";
+import { loadDb } from "@/lib/garden";
 
 export default function NowyZabiegPage() {
-  const [db, setDb] = useState<GardenDb>(loadDb());
-  const params = useSearchParams();
-
-  useEffect(() => {
-    setDb(loadDb());
-  }, []);
+  const db = loadDb();
+  const params =
+    typeof window === "undefined"
+      ? new URLSearchParams()
+      : new URLSearchParams(window.location.search);
 
   const target = params.get("target");
   const targetType = target === "group" ? "group" : "plant";

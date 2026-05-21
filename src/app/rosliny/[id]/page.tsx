@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 import {
   categoryLabels,
   deletePlant,
@@ -15,11 +14,8 @@ import {
 
 export default function RoslinaDetailsPage() {
   const { id } = useParams<{ id: string }>();
-  const [db, setDb] = useState(loadDb());
-
-  useEffect(() => {
-    setDb(loadDb());
-  }, []);
+  const router = useRouter();
+  const db = loadDb();
 
   const plant = db.plants.find((item) => item.id === id);
 
@@ -43,7 +39,7 @@ export default function RoslinaDetailsPage() {
             onClick={() => {
               if (window.confirm("Usunąć roślinę? Operacja jest nieodwracalna.")) {
                 deletePlant(plant.id);
-                window.location.href = "/rosliny";
+                router.push("/rosliny");
               }
             }}
           >
