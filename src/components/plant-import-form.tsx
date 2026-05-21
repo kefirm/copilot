@@ -129,7 +129,7 @@ function Messages({ title, items }: { title: string; items: string[] }) {
       <h3 className="font-medium">{title}</h3>
       <ul className="list-disc space-y-1 pl-5">
         {items.map((item, index) => (
-          <li key={`${title}-${item}-${index}`}>{item}</li>
+          <li key={index}>{item}</li>
         ))}
       </ul>
     </div>

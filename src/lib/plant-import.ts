@@ -25,7 +25,7 @@ const categoryHints: Array<{ category: Category; keywords: string[] }> = [
       "ostrolistna",
       "smakowita",
       "arguta",
-      "weiki",
+      "Weiki",
       "geneva",
       "hayward",
       "issai",
@@ -212,7 +212,7 @@ export function parseCsvMatrix(input: string): string[][] {
 export function inferPlantCategory(label: string): Category {
   const normalized = normalizeForMatch(label);
   for (const hint of categoryHints) {
-    if (hint.keywords.some((keyword) => normalized.includes(keyword))) {
+    if (hint.keywords.some((keyword) => normalized.includes(normalizeForMatch(keyword)))) {
       return hint.category;
     }
   }
