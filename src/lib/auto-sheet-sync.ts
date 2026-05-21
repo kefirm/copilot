@@ -22,6 +22,11 @@ const EMPTY_META: AutoSyncMeta = {
   last_error: null,
 };
 
+function canWriteLocalFiles(): boolean {
+  // Vercel runtime mounts app files as read-only (/var/task).
+  return process.env.VERCEL !== "1";
+}
+
 function toGoogleSheetParts(input: string): { sheetId: string; gid: string } {
   const url = new URL(input.trim());
   const match = url.pathname.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
@@ -124,6 +129,9 @@ async function fetchGoogleSheetCsv(sheetUrl: string): Promise<string> {
 
 export async function syncPlantsFromGoogleSheetIfDue(): Promise<void> {
   if (isReadOnlyModeEnabled()) {
+    return;
+  }
+  if (!canWriteLocalFiles()) {
     return;
   }
 
