@@ -259,12 +259,8 @@ export function deriveSpeciesAndVariety(
     };
   }
 
-  if (category === "vine") {
-    return { species: "Kiwi", variety: cleanupRemainder(label) };
-  }
-
   const parts = normalizeWhitespace(label).split(" ").filter(Boolean);
-  if (parts.length > 1) {
+  if (category !== "vine" && parts.length > 1) {
     return {
       species: parts[0],
       variety: cleanupRemainder(parts.slice(1).join(" ")),
@@ -287,6 +283,7 @@ export function importPlantsFromGrid(
   const rows = parseCsvMatrix(csvText);
   const plantsByPosition = new Map(db.plants.map((plant) => [`${plant.row_num}:${plant.col_num}`, plant]));
   const timestamp = nowIso();
+  const updatedPositions: string[] = [];
   const summary: PlantsImportSummary = {
     source_name: sourceName,
     total_rows_scanned: rows.length,
@@ -338,7 +335,7 @@ export function importPlantsFromGrid(
         existingPlant.category = category;
         existingPlant.updated_at = timestamp;
         summary.updated_count += 1;
-        summary.warnings.push(`Pozycja R${rowNum} C${colNum} była już zajęta, więc roślina została zaktualizowana.`);
+        updatedPositions.push(`R${rowNum} C${colNum}`);
         continue;
       }
 
@@ -361,6 +358,14 @@ export function importPlantsFromGrid(
       plantsByPosition.set(positionKey, importedPlant);
       summary.imported_count += 1;
     }
+  }
+
+  if (updatedPositions.length > 0) {
+    const preview = updatedPositions.slice(0, 10).join(", ");
+    const suffix = updatedPositions.length > 10 ? ", …" : "";
+    summary.warnings.push(
+      `Zaktualizowano ${updatedPositions.length} istniejących pozycji: ${preview}${suffix}.`,
+    );
   }
 
   return summary;
