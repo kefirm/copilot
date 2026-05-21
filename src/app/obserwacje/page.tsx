@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   ObservationType,
   deleteObservation,
@@ -17,18 +17,17 @@ export default function ObserwacjePage() {
   const [, forceRender] = useState(0);
   const db = loadDb();
   const [error, setError] = useState("");
-  const [form, setForm] = useState(() => {
-    const firstPlantId = loadDb().plants[0]?.id ?? "";
-    return {
-      plantId: firstPlantId,
-      date: new Date().toISOString().slice(0, 10),
-      observationType: "general",
-      title: "",
-      description: "",
-    };
+  const [form, setForm] = useState({
+    plantId: "",
+    date: new Date().toISOString().slice(0, 10),
+    observationType: "general",
+    title: "",
+    description: "",
   });
 
   const refresh = () => forceRender((v) => v + 1);
+
+  const isPlantSelected = useMemo(() => db.plants.some((plant) => plant.id === form.plantId), [db.plants, form.plantId]);
 
   return (
     <div className="space-y-4">
@@ -40,7 +39,7 @@ export default function ObserwacjePage() {
           e.preventDefault();
           setError("");
 
-          if (!form.plantId) {
+          if (!form.plantId || !isPlantSelected) {
             setError("Wybierz roślinę.");
             return;
           }
@@ -70,6 +69,9 @@ export default function ObserwacjePage() {
             Roślina
             <select className="mt-1 w-full rounded border border-zinc-300 px-3 py-2" value={form.plantId} onChange={(e) => setForm((prev) => ({ ...prev, plantId: e.target.value }))}>
               {db.plants.length === 0 && <option value="">Brak roślin</option>}
+              {db.plants.length > 0 && !isPlantSelected && form.plantId && (
+                <option value={form.plantId}>Wybierz roślinę</option>
+              )}
               {db.plants.map((plant) => (
                 <option key={plant.id} value={plant.id}>{plant.displayName}</option>
               ))}

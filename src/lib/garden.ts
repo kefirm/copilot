@@ -111,7 +111,7 @@ function createId() {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
     return crypto.randomUUID();
   }
-  return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  throw new Error("crypto.randomUUID nie jest wspierane w tym środowisku.");
 }
 
 function emptyDb(): GardenDb {
@@ -233,7 +233,7 @@ export function savePlant(input: PlantInput, plantId?: string) {
     );
 
     if (occupant) {
-      throw new Error(`Komórka R${input.rowNum} C${input.colNum} jest już zajęta.`);
+      throw new Error(`Komórka R${input.rowNum} C${input.colNum} jest już zajęta przez: ${occupant.displayName}.`);
     }
 
     const ts = nowIso();

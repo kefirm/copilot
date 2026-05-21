@@ -6,7 +6,6 @@ import {
   Plant,
   PlantCategory,
   categoryLabels,
-  loadDb,
   savePlant,
 } from "@/lib/garden";
 import { useRouter } from "next/navigation";
@@ -203,8 +202,4 @@ export function PlantForm({ mode, plant, groups }: PlantFormProps) {
       </div>
     </form>
   );
-}
-
-export function useGroupsForPlantForm() {
-  return loadDb().groups;
 }

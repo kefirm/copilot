@@ -16,8 +16,8 @@ type TreatmentFormProps = {
   mode: "create" | "edit";
   treatment?: Treatment;
   initialTargetType?: "plant" | "group";
-  initialPlantId?: string;
-  initialGroupId?: string;
+  preselectedPlantId?: string;
+  preselectedGroupId?: string;
 };
 
 const treatmentTypes: TreatmentType[] = ["spray", "fertilization"];
@@ -27,18 +27,16 @@ export function TreatmentForm({
   mode,
   treatment,
   initialTargetType,
-  initialPlantId,
-  initialGroupId,
+  preselectedPlantId,
+  preselectedGroupId,
 }: TreatmentFormProps) {
   const router = useRouter();
   const [error, setError] = useState("");
-  const [manualMode, setManualMode] = useState(
-    treatment ? !treatment.productId : false,
-  );
+  const [manualMode, setManualMode] = useState(!!(treatment && !treatment.productId));
   const [form, setForm] = useState({
     targetType: treatment?.targetType ?? initialTargetType ?? "plant",
-    plantId: treatment?.plantId ?? initialPlantId ?? "",
-    groupId: treatment?.groupId ?? initialGroupId ?? "",
+    plantId: treatment?.plantId ?? preselectedPlantId ?? "",
+    groupId: treatment?.groupId ?? preselectedGroupId ?? "",
     treatmentType: treatment?.treatmentType ?? "spray",
     date: treatment?.date ?? new Date().toISOString().slice(0, 10),
     productId: treatment?.productId ?? "",

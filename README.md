@@ -1,12 +1,12 @@
 # Ogród MVP (Next.js + TypeScript + Tailwind CSS)
 
 MVP aplikacji webowej do zarządzania ogrodem:
-- bez logowania (v1),
-- ręczne wprowadzanie danych,
-- mapa 24x120,
-- jedna komórka = jedna roślina,
-- pełne twarde usuwanie rekordów,
-- interfejs po polsku.
+- bez logowania (v1)
+- ręczne wprowadzanie danych
+- mapa 24x120
+- jedna komórka = jedna roślina
+- pełne twarde usuwanie rekordów
+- interfejs po polsku
 
 ## Stack
 - Next.js (App Router)

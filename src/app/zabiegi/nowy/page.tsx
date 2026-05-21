@@ -20,8 +20,8 @@ export default function NowyZabiegPage() {
         db={db}
         mode="create"
         initialTargetType={targetType}
-        initialPlantId={params.get("plantId") ?? undefined}
-        initialGroupId={params.get("groupId") ?? undefined}
+        preselectedPlantId={params.get("plantId") ?? undefined}
+        preselectedGroupId={params.get("groupId") ?? undefined}
       />
     </div>
   );
