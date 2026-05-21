@@ -113,6 +113,11 @@ function cleanupRemainder(value: string): string {
   return normalizeWhitespace(value.replace(/^[\s,;:/-]+|[\s,;:/-]+$/g, ""));
 }
 
+/**
+ * Detects whether the sparse spreadsheet export uses commas or semicolons as field separators.
+ * The scan ignores quoted fragments and inspects only the first few lines because the delimiter
+ * is expected to be consistent across the whole file.
+ */
 function detectDelimiter(input: string): "," | ";" {
   let commaCount = 0;
   let semicolonCount = 0;
@@ -141,6 +146,10 @@ function detectDelimiter(input: string): "," | ";" {
   return semicolonCount > commaCount ? ";" : ",";
 }
 
+/**
+ * Parses the uploaded spreadsheet export into a 2D matrix while preserving empty cells.
+ * Supports comma- and semicolon-delimited files, quoted values, escaped quotes, and CRLF/LF lines.
+ */
 export function parseCsvMatrix(input: string): string[][] {
   const source = input.replace(/^\uFEFF/, "");
   if (!source.trim()) return [];
@@ -192,6 +201,10 @@ export function parseCsvMatrix(input: string): string[][] {
   return rows;
 }
 
+/**
+ * Infers the plant category from the original spreadsheet label using fruit-name heuristics.
+ * Falls back to "shrub" for berry-like labels and "unknown" when no supported hint is found.
+ */
 export function inferPlantCategory(label: string): Category {
   const normalized = normalizeForMatch(label);
   for (const hint of categoryHints) {
@@ -211,10 +224,18 @@ export function inferPlantCategory(label: string): Category {
   return "unknown";
 }
 
+/**
+ * Produces a user-friendly display name by trimming the imported label and normalizing whitespace.
+ */
 export function deriveDisplayName(label: string): string {
   return normalizeWhitespace(label);
 }
 
+/**
+ * Splits the imported label into the app's species/variety fields.
+ * It first uses known species hints, then falls back to a vine-specific default or a simple
+ * first-word split when the label does not match any supported hint.
+ */
 export function deriveSpeciesAndVariety(
   label: string,
   category: Category,
@@ -254,6 +275,11 @@ export function deriveSpeciesAndVariety(
   return { species: normalizeWhitespace(label), variety: "" };
 }
 
+/**
+ * Imports sparse-grid CSV data into the local plant collection.
+ * Every non-empty cell maps to its row/column coordinate; occupied coordinates update the
+ * existing plant in place and are reported as warnings in the returned summary.
+ */
 export function importPlantsFromGrid(
   db: DatabaseSchema,
   csvText: string,

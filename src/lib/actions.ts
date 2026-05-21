@@ -205,6 +205,11 @@ export async function deletePlant(formData: FormData): Promise<void> {
   redirect("/rosliny");
 }
 
+/**
+ * Server action used by the Rośliny import form.
+ * Reads either an uploaded CSV file or the bundled sample, imports grid data into local storage,
+ * and returns a serializable summary for useActionState-based UI feedback.
+ */
 export async function importPlantsFromGridCsv(
   _prevState: ImportPlantsActionState,
   formData: FormData,
