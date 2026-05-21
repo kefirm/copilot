@@ -26,6 +26,7 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
       "Przeciągnij nazwę rośliny albo wybierz ją kliknięciem i wskaż puste pole. Zielone pola są dozwolonym celem, czerwone są zajęte.",
   });
   const [isPending, startTransition] = useTransition();
+  const mapMinWidth = `${cols * 64 + 120}px`;
 
   const occupied = useMemo(
     () => new Map(plants.map((plant) => [`${plant.row_num}:${plant.col_num}`, plant])),
@@ -98,7 +99,7 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
       </div>
 
       <div className="overflow-auto rounded-lg border border-zinc-200 bg-white">
-        <div className="min-w-[2600px] p-3">
+        <div className="p-3" style={{ minWidth: mapMinWidth }}>
           <table>
             <caption className="sr-only">Mapa rozmieszczenia roślin w ogrodzie</caption>
             <thead>

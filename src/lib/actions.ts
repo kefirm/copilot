@@ -15,6 +15,11 @@ function refreshAll(): void {
   revalidatePath("/obserwacje");
 }
 
+function revalidatePlantPaths(plantId: string): void {
+  revalidatePath(`/rosliny/${plantId}`);
+  revalidatePath(`/rosliny/${plantId}/edytuj`);
+}
+
 function assertPlantPositionAvailable(
   plants: Array<{ id: string; row_num: number; col_num: number }>,
   row: number,
@@ -220,8 +225,7 @@ export async function movePlantOnMap(input: {
 
   await writeDb(db);
   refreshAll();
-  revalidatePath(`/rosliny/${plant.id}`);
-  revalidatePath(`/rosliny/${plant.id}/edytuj`);
+  revalidatePlantPaths(plant.id);
 
   return {
     ok: true,
