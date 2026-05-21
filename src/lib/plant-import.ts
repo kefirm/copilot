@@ -212,7 +212,8 @@ export function parseCsvMatrix(input: string): string[][] {
 
 /**
  * Infers the plant category from the original spreadsheet label using fruit-name heuristics.
- * Falls back to "shrub" for berry-like labels and "unknown" when no supported hint is found.
+ * A normalized label is matched against normalized partial keywords for each supported category.
+ * Returns "unknown" only when none of the keyword fragments appear in the imported label.
  */
 export function inferPlantCategory(label: string): Category {
   const normalized = normalizeForMatch(label);
@@ -237,6 +238,8 @@ export function deriveDisplayName(label: string): string {
  * It first uses known species hints, then falls back to a vine-specific default or a simple
  * first-word split when the label does not match any supported hint. Vines keep the full label
  * in `species` during the final fallback because cultivar-only kiwi labels are common in imports.
+ * The regex uses explicit separator character classes instead of `\b` so Polish diacritics and
+ * punctuation in spreadsheet labels do not create false word boundaries during species matching.
  */
 export function deriveSpeciesAndVariety(
   label: string,
@@ -273,7 +276,9 @@ export function deriveSpeciesAndVariety(
 /**
  * Imports sparse-grid CSV data into the local plant collection.
  * Every non-empty cell maps to its row/column coordinate; occupied coordinates update the
- * existing plant in place and are reported as warnings in the returned summary.
+ * existing plant in place and are reported as warnings in the returned summary. Building the
+ * position map is linear in the number of stored plants, which remains practical for this fixed
+ * 24 × 120 garden grid.
  */
 export function importPlantsFromGrid(
   db: DatabaseSchema,
