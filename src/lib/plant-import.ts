@@ -101,6 +101,7 @@ function normalizeWhitespace(value: string): string {
 
 function normalizeForMatch(value: string): string {
   return normalizeWhitespace(value)
+    .replace(/[łŁ]/g, (character) => (character === "ł" ? "l" : "L"))
     .toLocaleLowerCase("pl-PL")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
