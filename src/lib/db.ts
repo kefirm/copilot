@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import type { DatabaseSchema } from "@/lib/types";
+import { normalizeGroupName } from "@/lib/utils";
 
 const DB_PATH = path.join(process.cwd(), "data", "db.json");
 
@@ -30,7 +31,10 @@ export async function readDb(): Promise<DatabaseSchema> {
   try {
     const parsed = JSON.parse(raw) as Partial<DatabaseSchema>;
     return {
-      groups: parsed.groups ?? [],
+      groups: (parsed.groups ?? []).map((group) => ({
+        ...group,
+        name: normalizeGroupName(group.name),
+      })),
       plants: parsed.plants ?? [],
       products: parsed.products ?? [],
       treatments: parsed.treatments ?? [],

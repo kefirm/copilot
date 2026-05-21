@@ -17,11 +17,14 @@ const MAX_ROWS = 120;
 const MAX_COLS = 30;
 const MIN_PLANT_ROW = 40;
 
-const categoryHints: Array<{ category: Category; keywords: string[] }> = [
-  { category: "potted", keywords: ["w doniczce", "w donicy", "doniczka", "donica", "patio"] },
+const categoryHints: Array<{ category: Category; normalizedKeywords: string[] }> = [
+  {
+    category: "potted",
+    normalizedKeywords: ["w doniczce", "w donicy", "doniczka", "donica", "patio"].map(normalizeForMatch),
+  },
   {
     category: "vine",
-    keywords: [
+    normalizedKeywords: [
       "kiwi",
       "ostrolistna",
       "smakowita",
@@ -32,11 +35,11 @@ const categoryHints: Array<{ category: Category; keywords: string[] }> = [
       "issai",
       "dr szymanowski",
       "purpurna sadowa",
-    ],
+    ].map(normalizeForMatch),
   },
   {
     category: "tree",
-    keywords: [
+    normalizedKeywords: [
       "jabłon",
       "jablon",
       "grusza",
@@ -53,11 +56,11 @@ const categoryHints: Array<{ category: Category; keywords: string[] }> = [
       "migdalowiec",
       "morwa",
       "figowiec",
-    ],
+    ].map(normalizeForMatch),
   },
   {
     category: "shrub",
-    keywords: [
+    normalizedKeywords: [
       "borówka",
       "borowka",
       "porzeczka",
@@ -69,7 +72,7 @@ const categoryHints: Array<{ category: Category; keywords: string[] }> = [
       "jagoda goji",
       "goji",
       "pigwowiec",
-    ],
+    ].map(normalizeForMatch),
   },
 ];
 
@@ -244,12 +247,13 @@ export function parseCsvMatrix(input: string): string[][] {
 
 /**
  * Infers the plant category from the original spreadsheet label using fruit-name heuristics.
- * Falls back to "shrub" for berry-like labels and "unknown" when no supported hint is found.
+ * A normalized label is matched against normalized partial keywords for each supported category.
+ * Returns "unknown" only when none of the keyword fragments appear in the imported label.
  */
 export function inferPlantCategory(label: string): Category {
   const normalized = normalizeForMatch(label);
   for (const hint of categoryHints) {
-    if (hint.keywords.some((keyword) => normalized.includes(normalizeForMatch(keyword)))) {
+    if (hint.normalizedKeywords.some((keyword) => normalized.includes(keyword))) {
       return hint.category;
     }
   }
@@ -269,6 +273,8 @@ export function deriveDisplayName(label: string): string {
  * It first uses known species hints, then falls back to a vine-specific default or a simple
  * first-word split when the label does not match any supported hint. Vines keep the full label
  * in `species` during the final fallback because cultivar-only kiwi labels are common in imports.
+ * The regex uses explicit separator character classes instead of `\b` so Polish diacritics and
+ * punctuation in spreadsheet labels do not create false word boundaries during species matching.
  */
 export function deriveSpeciesAndVariety(
   label: string,
@@ -290,6 +296,8 @@ export function deriveSpeciesAndVariety(
   }
 
   const parts = normalizeWhitespace(label).split(" ").filter(Boolean);
+  // Kiwi imports often contain cultivar-only labels, so keep the full label as `species`
+  // instead of splitting the first token away during the generic fallback path for vines.
   if (category !== "vine" && parts.length > 1) {
     return {
       species: parts[0],
@@ -303,7 +311,9 @@ export function deriveSpeciesAndVariety(
 /**
  * Imports sparse-grid CSV data into the local plant collection.
  * Every non-empty cell maps to its row/column coordinate; occupied coordinates update the
- * existing plant in place and are reported as warnings in the returned summary.
+ * existing plant in place and are reported as warnings in the returned summary. Building the
+ * position map is linear in the number of stored plants, which remains practical for this fixed
+ * 24 × 120 garden grid.
  */
 export function importPlantsFromGrid(
   db: DatabaseSchema,
@@ -353,6 +363,11 @@ export function importPlantsFromGrid(
 
       const displayName = deriveDisplayName(originalLabel);
       const category = inferPlantCategory(originalLabel);
+      if (category === "unknown") {
+        summary.warnings.push(
+          `Nie rozpoznano kategorii dla "${originalLabel}" na pozycji R${rowNum} C${colNum}; ustawiono "unknown".`,
+        );
+      }
       const { species, variety } = deriveSpeciesAndVariety(displayName, category);
       const positionKey = `${rowNum}:${colNum}`;
       const existingPlant = plantsByPosition.get(positionKey);
