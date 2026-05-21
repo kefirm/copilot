@@ -39,7 +39,7 @@ const SAMPLE_GARDEN_CSV_PATH = path.join(
   "examples",
   "przykladowy-arkusz-ogrodu.csv",
 );
-// Imports are handled fully in-memory via server action. For the fixed 20 × 200 grid, 2 MB is
+// Imports are handled fully in-memory via server action. For the fixed 24 × 120 grid, 2 MB is
 // comfortably enough for sparse CSV exports while still preventing unexpectedly large uploads.
 const MAX_IMPORT_UPLOAD_SIZE_BYTES = 2 * 1024 * 1024;
 
@@ -174,8 +174,8 @@ export async function createPlant(formData: FormData): Promise<void> {
   const rowNum = parseIntSafe(formData.get("row_num"));
   const colNum = parseIntSafe(formData.get("col_num"));
 
-  if (rowNum < 1 || rowNum > 200 || colNum < 1 || colNum > 20) {
-    throw new Error("Współrzędne muszą mieścić się w zakresie 1-200 (wiersz) i 1-20 (kolumna).");
+  if (rowNum < 1 || rowNum > 120 || colNum < 1 || colNum > 24) {
+    throw new Error("Współrzędne muszą mieścić się w zakresie 1-120 (wiersz) i 1-24 (kolumna).");
   }
   assertPlantPositionAvailable(db.plants, rowNum, colNum);
 
@@ -229,8 +229,8 @@ export async function updatePlant(formData: FormData): Promise<void> {
   const rowNum = parseIntSafe(formData.get("row_num"));
   const colNum = parseIntSafe(formData.get("col_num"));
 
-  if (rowNum < 1 || rowNum > 200 || colNum < 1 || colNum > 20) {
-    throw new Error("Współrzędne muszą mieścić się w zakresie 1-200 (wiersz) i 1-20 (kolumna).");
+  if (rowNum < 1 || rowNum > 120 || colNum < 1 || colNum > 24) {
+    throw new Error("Współrzędne muszą mieścić się w zakresie 1-120 (wiersz) i 1-24 (kolumna).");
   }
   assertPlantPositionAvailable(db.plants, rowNum, colNum, plantId);
 
@@ -283,8 +283,8 @@ export async function movePlantOnMap(formData: FormData): Promise<void> {
   const rowNum = parseIntSafe(formData.get("row_num"));
   const colNum = parseIntSafe(formData.get("col_num"));
 
-  if (rowNum < 1 || rowNum > 200 || colNum < 1 || colNum > 20) {
-    throw new Error("Współrzędne muszą mieścić się w zakresie 1-200 (wiersz) i 1-20 (kolumna).");
+  if (rowNum < 1 || rowNum > 120 || colNum < 1 || colNum > 24) {
+    throw new Error("Współrzędne muszą mieścić się w zakresie 1-120 (wiersz) i 1-24 (kolumna).");
   }
 
   const plant = db.plants.find((p) => p.id === plantId);

@@ -13,8 +13,8 @@ export interface PlantsImportSummary {
   errors: string[];
 }
 
-const MAX_ROWS = 200;
-const MAX_COLS = 20;
+const MAX_ROWS = 120;
+const MAX_COLS = 24;
 const MIN_PLANT_ROW = 40;
 
 const categoryHints: Array<{ category: Category; normalizedKeywords: string[] }> = [
@@ -322,7 +322,7 @@ export function deriveSpeciesAndVariety(
  * Every non-empty cell maps to its row/column coordinate; occupied coordinates update the
  * existing plant in place and are reported as warnings in the returned summary. Building the
  * position map is linear in the number of stored plants, which remains practical for this fixed
- * 20 × 200 garden grid.
+ * 24 × 120 garden grid.
  */
 export function importPlantsFromGrid(
   db: DatabaseSchema,
@@ -365,7 +365,7 @@ export function importPlantsFromGrid(
       const colNum = columnIndex + 1;
       if (colNum > MAX_COLS) {
         summary.warnings.push(
-          `Pominięto "${originalLabel}" na pozycji R${rowNum} C${colNum}, bo wykracza poza mapę 200×20.`,
+          `Pominięto "${originalLabel}" na pozycji R${rowNum} C${colNum}, bo wykracza poza mapę 120×24.`,
         );
         continue;
       }

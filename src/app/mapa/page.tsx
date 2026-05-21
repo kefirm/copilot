@@ -3,8 +3,8 @@ import { MapGrid } from "@/components/map-grid";
 import { syncPlantsFromGoogleSheetIfDue } from "@/lib/auto-sheet-sync";
 import { buildGroupColors } from "@/lib/group-colors";
 
-const ROWS = 200;
-const COLS = 20;
+const ROWS = 120;
+const COLS = 24;
 const START_VISIBLE_ROW = 36;
 
 export default async function MapaPage() {

@@ -50,23 +50,25 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
 
     setActivePlantId(null);
     startTransition(async () => {
-      const result = await movePlantOnMap({
-        plantId: activePlant.id,
-        rowNum,
-        colNum,
-      });
+      try {
+        const formData = new FormData();
+        formData.set("plant_id", activePlant.id);
+        formData.set("row_num", String(rowNum));
+        formData.set("col_num", String(colNum));
+        await movePlantOnMap(formData);
 
-      if (!result.ok) {
-        setMoveNotice("error", result.message);
-        return;
+        setPlants((currentPlants) =>
+          currentPlants.map((plant) =>
+            plant.id === activePlant.id ? { ...plant, row_num: rowNum, col_num: colNum } : plant,
+          ),
+        );
+        setMoveNotice("success", "Roślina została przeniesiona.");
+      } catch (error) {
+        setMoveNotice(
+          "error",
+          error instanceof Error ? error.message : "Nie udało się przenieść rośliny.",
+        );
       }
-
-      setPlants((currentPlants) =>
-        currentPlants.map((plant) =>
-          plant.id === activePlant.id ? { ...plant, row_num: rowNum, col_num: colNum } : plant,
-        ),
-      );
-      setMoveNotice("success", result.message);
     });
   }
 

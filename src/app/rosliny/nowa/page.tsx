@@ -48,12 +48,12 @@ export default async function NowaRoslinaPage() {
           </select>
         </label>
         <label className="flex flex-col gap-1">
-          Wiersz (1-200)
-          <input type="number" min={1} max={200} name="row_num" required />
+          Wiersz (1-120)
+          <input type="number" min={1} max={120} name="row_num" required />
         </label>
         <label className="flex flex-col gap-1">
-          Kolumna (1-20)
-          <input type="number" min={1} max={20} name="col_num" required />
+          Kolumna (1-24)
+          <input type="number" min={1} max={24} name="col_num" required />
         </label>
         <label className="flex flex-col gap-1 md:col-span-2">
           Notatki
