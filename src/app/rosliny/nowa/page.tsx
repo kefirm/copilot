@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createPlant } from "@/lib/actions";
 import { readDb } from "@/lib/db";
+import { categoryOptions } from "@/lib/plants";
 
 export default async function NowaRoslinaPage() {
   const db = await readDb();
@@ -28,10 +29,11 @@ export default async function NowaRoslinaPage() {
         <label className="flex flex-col gap-1">
           Kategoria
           <select name="category" required defaultValue="tree">
-            <option value="tree">Drzewo</option>
-            <option value="shrub">Krzew</option>
-            <option value="vine">Pnącze</option>
-            <option value="potted">Doniczkowa</option>
+            {categoryOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </label>
         <label className="flex flex-col gap-1">
