@@ -100,11 +100,17 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
       <div className="overflow-auto rounded-lg border border-zinc-200 bg-white">
         <div className="min-w-[2600px] p-3">
           <table>
+            <caption className="sr-only">Mapa rozmieszczenia roślin w ogrodzie</caption>
             <thead>
               <tr>
                 <th>Wiersz/Kol.</th>
                 {Array.from({ length: cols }, (_, col) => (
-                  <th key={col + 1} scope="col" className="text-center text-xs">
+                  <th
+                    key={col + 1}
+                    scope="col"
+                    aria-label={`Kolumna ${col + 1}`}
+                    className="text-center text-xs"
+                  >
                     {col + 1}
                   </th>
                 ))}
