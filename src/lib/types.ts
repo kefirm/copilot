@@ -1,4 +1,4 @@
-export type Category = "tree" | "shrub" | "vine" | "potted";
+export type Category = "tree" | "shrub" | "vine" | "potted" | "unknown";
 
 export type TreatmentType = "spray" | "fertilization";
 export type TreatmentTargetType = "plant" | "group";

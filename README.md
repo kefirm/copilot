@@ -34,6 +34,7 @@ npm run build
 - Dashboard (`/`)
 - Mapa ogrodu 24x120 (`/mapa`) z nazwą rośliny tylko w zajętych komórkach i ręcznym przeciąganiem na puste pola
 - CRUD roślin (`/rosliny`)
+- Import CSV siatki ogrodu w sekcji roślin z podsumowaniem importu
 - CRUD grup (`/grupy`)
 - CRUD produktów (`/produkty`)
 - CRUD zabiegów (`/zabiegi`) z celem: roślina lub grupa
@@ -62,3 +63,45 @@ Dane przechowywane są lokalnie w `data/db.json`:
 ## Nazewnictwo grup
 
 - Dla uproszczonych grup krzewów używaj etykiety `Krzewy`.
+
+## Import arkusza CSV z roślinami
+
+Importer jest dostępny w widoku **Rośliny** (`/rosliny`).
+
+### Jak zaimportować Twój plik `Drzewa i krzewy - Arkusz1.csv`
+
+1. Uruchom aplikację:
+
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+2. Otwórz `http://localhost:3000/rosliny`.
+3. W sekcji **Import z arkusza CSV** kliknij **Importuj wybrany plik CSV** i wybierz swój wyeksportowany plik `Drzewa i krzewy - Arkusz1.csv`.
+4. Po imporcie zobaczysz podsumowanie:
+   - liczba przeskanowanych wierszy i komórek,
+   - liczba nowych roślin,
+   - liczba zaktualizowanych pozycji,
+   - liczba pominiętych pustych komórek,
+   - ostrzeżenia i błędy.
+
+### Jak działa mapowanie arkusza
+
+- plik jest interpretowany jako **siatka ogrodu**,
+- numer wiersza w CSV = `row_num`,
+- numer kolumny w CSV = `col_num`,
+- każda niepusta komórka tworzy lub aktualizuje roślinę na mapie,
+- całkowicie puste komórki i wiersze są pomijane,
+- przy ponownym imporcie zajęte współrzędne są aktualizowane i raportowane w podsumowaniu.
+
+Importer zachowuje oryginalny tekst komórki w polu `original_label`, tworzy przyjazny `display_name` oraz próbuje odgadnąć kategorię (`tree`, `shrub`, `vine`, `potted`, `unknown`) na podstawie nazwy.
+
+### Przykład z repo
+
+Do szybkiego sprawdzenia działania możesz:
+
+- kliknąć przycisk **Załaduj przykład z repo** w `/rosliny`, albo
+- pobrać plik `public/examples/przykladowy-arkusz-ogrodu.csv`.
+
+Nie musisz ręcznie edytować żadnych plików projektu ani `data/db.json` — import zapisuje dane lokalnie sam.

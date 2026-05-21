@@ -1,8 +1,11 @@
 "use server";
 
+import { promises as fs } from "node:fs";
+import path from "node:path";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { id, nowIso, readDb, writeDb } from "@/lib/db";
+import { importPlantsFromGrid, type PlantsImportSummary } from "@/lib/plant-import";
 import { normalizeGroupName, parseIntSafe, text } from "@/lib/utils";
 
 function refreshAll(): void {
@@ -34,8 +37,21 @@ function assertPlantPositionAvailable(
   }
 }
 
-function parseCategory(value: string): "tree" | "shrub" | "vine" | "potted" {
-  if (value === "tree" || value === "shrub" || value === "vine" || value === "potted") {
+const SAMPLE_GARDEN_CSV_PATH = path.join(
+  process.cwd(),
+  "public",
+  "examples",
+  "przykladowy-arkusz-ogrodu.csv",
+);
+
+function parseCategory(value: string): "tree" | "shrub" | "vine" | "potted" | "unknown" {
+  if (
+    value === "tree" ||
+    value === "shrub" ||
+    value === "vine" ||
+    value === "potted" ||
+    value === "unknown"
+  ) {
     return value;
   }
   throw new Error("Nieprawidłowa kategoria rośliny.");
@@ -54,6 +70,16 @@ function parseTargetType(value: string): "plant" | "group" {
   }
   throw new Error("Nieprawidłowy typ celu zabiegu.");
 }
+
+function isUploadedFile(value: FormDataEntryValue | null): value is File {
+  return value instanceof File;
+}
+
+type ImportPlantsActionState = {
+  status: "idle" | "success" | "error";
+  message: string;
+  summary: PlantsImportSummary | null;
+};
 
 export async function createGroup(formData: FormData): Promise<void> {
   const db = await readDb();
@@ -231,6 +257,82 @@ export async function movePlantOnMap(input: {
     ok: true,
     message: `Przeniesiono ${plant.display_name} do wiersza ${input.rowNum}, kolumny ${input.colNum}.`,
   };
+}
+
+/**
+ * Server action used by the Rośliny import form.
+ * Reads either an uploaded CSV file or the bundled sample, imports grid data into local storage,
+ * and returns a serializable summary for useActionState-based UI feedback.
+ */
+export async function importPlantsFromGridCsv(
+  _prevState: ImportPlantsActionState,
+  formData: FormData,
+): Promise<ImportPlantsActionState> {
+  try {
+    const importSource = text(formData.get("import_source")) === "sample" ? "sample" : "upload";
+    let csvText = "";
+    let sourceName = "";
+
+    if (importSource === "sample") {
+      csvText = await fs.readFile(SAMPLE_GARDEN_CSV_PATH, "utf8");
+      sourceName = "przykladowy-arkusz-ogrodu.csv";
+    } else {
+      const file = formData.get("csv_file");
+      if (!isUploadedFile(file) || file.size === 0) {
+        return {
+          status: "error",
+          message: "Wybierz plik CSV albo użyj przykładu z repo.",
+          summary: null,
+        };
+      }
+
+      if (file.size > 2 * 1024 * 1024) {
+        return {
+          status: "error",
+          message: "Plik jest zbyt duży. Maksymalny rozmiar importu to 2 MB.",
+          summary: null,
+        };
+      }
+
+      csvText = await file.text();
+      sourceName = file.name || "import.csv";
+    }
+
+    const db = await readDb();
+    const summary = importPlantsFromGrid(db, csvText, sourceName);
+    const changedPlants = summary.imported_count + summary.updated_count;
+
+    if (summary.total_cells_scanned === 0) {
+      return {
+        status: "error",
+        message: "Plik CSV jest pusty.",
+        summary,
+      };
+    }
+
+    if (changedPlants === 0) {
+      return {
+        status: "error",
+        message: "Nie znaleziono żadnych niepustych komórek z roślinami do importu.",
+        summary,
+      };
+    }
+
+    await writeDb(db);
+    refreshAll();
+
+    return {
+      status: "success",
+      message: `Import zakończony. Dodano ${summary.imported_count} roślin i zaktualizowano ${summary.updated_count}.`,
+      summary,
+    };
+  } catch (error) {
+    return {
+      status: "error",
+      message: error instanceof Error ? error.message : "Nie udało się zaimportować pliku CSV.",
+      summary: null,
+    };
+  }
 }
 
 export async function createProduct(formData: FormData): Promise<void> {
