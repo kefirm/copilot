@@ -56,7 +56,6 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
 
       if (!result.ok) {
         setMoveNotice("error", result.message);
-        router.refresh();
         return;
       }
 
