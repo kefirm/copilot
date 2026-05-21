@@ -105,7 +105,7 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
               <tr>
                 <th>Wiersz/Kol.</th>
                 {Array.from({ length: cols }, (_, col) => (
-                  <th key={col + 1} className="text-center text-xs">
+                  <th key={col + 1} scope="col" className="text-center text-xs">
                     {col + 1}
                   </th>
                 ))}
@@ -116,7 +116,9 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
                 const rowNum = row + 1;
                 return (
                   <tr key={rowNum}>
-                    <th className="bg-zinc-50 text-center text-xs">{rowNum}</th>
+                    <th scope="row" className="bg-zinc-50 text-center text-xs">
+                      {rowNum}
+                    </th>
                     {Array.from({ length: cols }, (_, col) => {
                       const colNum = col + 1;
                       const plant = occupied.get(`${rowNum}:${colNum}`);
@@ -130,6 +132,13 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
                           data-row={rowNum}
                           data-col={colNum}
                           data-occupied={plant ? "true" : "false"}
+                          aria-label={
+                            plant
+                              ? `${plant.display_name}, wiersz ${rowNum}, kolumna ${colNum}`
+                              : `Puste pole, wiersz ${rowNum}, kolumna ${colNum}${
+                                  activePlantId ? ", dostępne do przeniesienia rośliny" : ""
+                                }`
+                          }
                           className={[
                             "min-w-16 align-middle text-xs transition-colors",
                             plant ? "bg-emerald-50" : "bg-white",
@@ -186,7 +195,7 @@ export function GardenMap({ cols, initialPlants, rows }: GardenMapProps) {
                               {plant.display_name}
                             </div>
                           ) : (
-                            <span className="block min-h-8" aria-hidden="true" />
+                            <span className="block min-h-8" />
                           )}
                         </td>
                       );
