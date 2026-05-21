@@ -321,6 +321,11 @@ export function importPlantsFromGrid(
 
       const displayName = deriveDisplayName(originalLabel);
       const category = inferPlantCategory(originalLabel);
+      if (category === "unknown") {
+        summary.warnings.push(
+          `Nie rozpoznano kategorii dla "${originalLabel}" na pozycji R${rowNum} C${colNum}; ustawiono "unknown".`,
+        );
+      }
       const { species, variety } = deriveSpeciesAndVariety(displayName, category);
       const positionKey = `${rowNum}:${colNum}`;
       const existingPlant = plantsByPosition.get(positionKey);
