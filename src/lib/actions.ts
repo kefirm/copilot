@@ -29,6 +29,27 @@ function assertPlantPositionAvailable(
   }
 }
 
+function parseCategory(value: string): "tree" | "shrub" | "vine" | "potted" {
+  if (value === "tree" || value === "shrub" || value === "vine" || value === "potted") {
+    return value;
+  }
+  throw new Error("Nieprawidłowa kategoria rośliny.");
+}
+
+function parseTreatmentType(value: string): "spray" | "fertilization" {
+  if (value === "spray" || value === "fertilization") {
+    return value;
+  }
+  throw new Error("Nieprawidłowy typ zabiegu.");
+}
+
+function parseTargetType(value: string): "plant" | "group" {
+  if (value === "plant" || value === "group") {
+    return value;
+  }
+  throw new Error("Nieprawidłowy typ celu zabiegu.");
+}
+
 export async function createGroup(formData: FormData): Promise<void> {
   const db = await readDb();
   const timestamp = nowIso();
@@ -95,7 +116,7 @@ export async function createPlant(formData: FormData): Promise<void> {
     species: text(formData.get("species")),
     variety: text(formData.get("variety")),
     original_label: text(formData.get("original_label")),
-    category: text(formData.get("category")) as "tree" | "shrub" | "vine" | "potted",
+    category: parseCategory(text(formData.get("category"))),
     group_id: groupId || null,
     row_num: rowNum,
     col_num: colNum,
@@ -129,7 +150,7 @@ export async function updatePlant(formData: FormData): Promise<void> {
   plant.species = text(formData.get("species"));
   plant.variety = text(formData.get("variety"));
   plant.original_label = text(formData.get("original_label"));
-  plant.category = text(formData.get("category")) as "tree" | "shrub" | "vine" | "potted";
+  plant.category = parseCategory(text(formData.get("category")));
   plant.group_id = groupId || null;
   plant.row_num = rowNum;
   plant.col_num = colNum;
@@ -205,7 +226,7 @@ export async function deleteProduct(formData: FormData): Promise<void> {
 export async function createTreatment(formData: FormData): Promise<void> {
   const db = await readDb();
   const timestamp = nowIso();
-  const targetType = text(formData.get("target_type")) as "plant" | "group";
+  const targetType = parseTargetType(text(formData.get("target_type")));
   const plantId = text(formData.get("plant_id"));
   const groupId = text(formData.get("group_id"));
   const productId = text(formData.get("product_id"));
@@ -215,7 +236,7 @@ export async function createTreatment(formData: FormData): Promise<void> {
     target_type: targetType,
     plant_id: targetType === "plant" && plantId ? plantId : null,
     group_id: targetType === "group" && groupId ? groupId : null,
-    treatment_type: text(formData.get("treatment_type")) as "spray" | "fertilization",
+    treatment_type: parseTreatmentType(text(formData.get("treatment_type"))),
     date: text(formData.get("date")),
     product_id: productId || null,
     product_name_manual: text(formData.get("product_name_manual")),
@@ -238,7 +259,7 @@ export async function updateTreatment(formData: FormData): Promise<void> {
   const treatment = db.treatments.find((t) => t.id === treatmentId);
   if (!treatment) redirect("/zabiegi");
 
-  const targetType = text(formData.get("target_type")) as "plant" | "group";
+  const targetType = parseTargetType(text(formData.get("target_type")));
   const plantId = text(formData.get("plant_id"));
   const groupId = text(formData.get("group_id"));
   const productId = text(formData.get("product_id"));
@@ -246,7 +267,7 @@ export async function updateTreatment(formData: FormData): Promise<void> {
   treatment.target_type = targetType;
   treatment.plant_id = targetType === "plant" && plantId ? plantId : null;
   treatment.group_id = targetType === "group" && groupId ? groupId : null;
-  treatment.treatment_type = text(formData.get("treatment_type")) as "spray" | "fertilization";
+  treatment.treatment_type = parseTreatmentType(text(formData.get("treatment_type")));
   treatment.date = text(formData.get("date"));
   treatment.product_id = productId || null;
   treatment.product_name_manual = text(formData.get("product_name_manual"));
