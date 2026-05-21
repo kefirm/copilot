@@ -113,6 +113,10 @@ function cleanupRemainder(value: string): string {
   return normalizeWhitespace(value.replace(/^[\s,;:/-]+|[\s,;:/-]+$/g, ""));
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 /**
  * Detects whether the sparse spreadsheet export uses commas or semicolons as field separators.
  * The scan ignores quoted fragments and inspects only the first few lines because the delimiter
@@ -240,23 +244,18 @@ export function deriveSpeciesAndVariety(
   label: string,
   category: Category,
 ): { species: string; variety: string } {
-  const normalizedLabel = normalizeForMatch(label);
-
   for (const speciesHint of speciesHints) {
-    const normalizedHint = normalizeForMatch(speciesHint);
-    if (!normalizedLabel.includes(normalizedHint)) continue;
+    const matcher = new RegExp(`(^|[\\s,;:/-])${escapeRegExp(speciesHint)}(?=$|[\\s,;:/-])`, "i");
+    const match = matcher.exec(label);
+    if (!match) continue;
 
-    const prefixMatcher = new RegExp(`^\\s*${speciesHint}[\\s,;:/-]*`, "i");
-    if (prefixMatcher.test(label)) {
-      return {
-        species: speciesHint,
-        variety: cleanupRemainder(label.replace(prefixMatcher, "")),
-      };
-    }
-
+    const matchIndex = match.index + match[1].length;
+    const matchedValue = match[0].slice(match[1].length);
     return {
       species: speciesHint,
-      variety: cleanupRemainder(label),
+      variety: cleanupRemainder(
+        `${label.slice(0, matchIndex)} ${label.slice(matchIndex + matchedValue.length)}`,
+      ),
     };
   }
 
